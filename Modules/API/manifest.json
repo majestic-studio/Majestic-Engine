@@ -1,0 +1,12 @@
+{
+  "type": "API",
+  "name": "API module",
+  "description": "Global Majestic REST API module",
+  "authors": [
+    {
+      "name": "zerxa | zerxafun",
+      "email": "zerxafun@gmail.com"
+    }
+  ]
+
+}

@@ -1,0 +1,15 @@
+AddDefaultCharset utf-8
+RewriteEngine On
+RewriteBase /
+
+
+Options All -Indexes
+RewriteEngine on
+
+<FilesMatch "\.(php|css|json|js|png|jpg|ttf|woff|woff2|ico|gif|)$|^$">
+   Order deny,allow
+   Allow from all
+</FilesMatch>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]

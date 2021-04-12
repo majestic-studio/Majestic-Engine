@@ -1,0 +1,25 @@
+{
+    "name": "majestic-system [engine]",
+    "description": "Majestic Framework - создай свой потрясающий сайт вместе с нами!",
+    "authors": [
+        {
+            "name": "Stanislav Boltov",
+            "email": "ZerxaFun@gmail.com",
+            "homepage": "https://zerxafun.github.io",
+            "role": "Developer"
+        }
+    ],
+    "license": "GPL v3",
+    "require": {
+        "php" : ">=8.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core",
+            "Modules\\": "Modules"
+        }
+    }
+}
