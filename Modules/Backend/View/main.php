@@ -10,8 +10,7 @@
 <body>
 <div>
     <p>-----</p>
-</div>
-<?php
+</div><?php
 echo \Core\Service\Template\Layout::content()
 
 ?>
