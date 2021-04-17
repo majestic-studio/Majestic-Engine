@@ -4,8 +4,18 @@
 namespace Core\Service\Client;
 
 
+use Core\Service\Localization\Language;
+use DI;
+
 class Client
 {
+
+    public static function language()
+    {
+        $lang = new Language();
+        $lang->getLanguage();
+        return DI::instance()->get('lang');
+    }
     /**
      * @return string|null
      */

@@ -3,8 +3,11 @@
 namespace Modules\Frontend\Controller;
 
 use Controller;
+use Core\Service\Client\Client;
 use Core\Service\Localization\I18n;
+use Core\Service\Localization\Language;
 use Core\Service\Routing\Router;
+use DI;
 use Modules\Frontend;
 use Exception;
 
@@ -20,13 +23,22 @@ class FrontendController extends Controller
      */
     public function __construct()
     {
-        I18n::instance()
-        ->load('main/main');
+        /**
+         * Подключение языка Frontend по умолчанию.
+         */
+        Client::language();
 
-        echo_lang('main.main.heading');
+        I18n::instance()->load('main/main');
+
+        /**
+         * Подключение запрошенного модуля
+         */
         $module = new Router();
         $module = $module::module()->module;
 
+        /**
+         * Запись запроса в массив $data[]
+         */
         $this->setData('module', $module);
     }
 }

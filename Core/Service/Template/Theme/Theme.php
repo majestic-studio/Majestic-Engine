@@ -69,7 +69,7 @@ class Theme extends AbstractTheme
      * @param $mjt_name
      * @return bool|string
      */
-    public function load_template($mjt_name)
+    public function load_template($mjt_name): bool|string
     {
 
         $mjt_name = str_replace(chr(0), '', (string)$mjt_name);
@@ -126,11 +126,12 @@ class Theme extends AbstractTheme
         return true;
     }
 
+
     /**
      * @param array $matches
-     * @return false|mixed|string
+     * @return mixed
      */
-    public function load_file($matches = [])
+    final public function load_file(array $matches = []): mixed
     {
         $name = $matches[1];
 
@@ -151,7 +152,7 @@ class Theme extends AbstractTheme
      * @param $mjt_name
      * @return false|string
      */
-    public function sub_load_template($mjt_name)
+    final public function sub_load_template(string $mjt_name): bool|string
     {
         if ($mjt_name === '' || !file_exists($this->dir . DIRECTORY_SEPARATOR . $mjt_name)) {
             die ("Невозможно загрузить шаблон: " . $mjt_name);

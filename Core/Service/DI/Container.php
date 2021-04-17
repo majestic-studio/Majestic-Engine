@@ -55,7 +55,7 @@ class Container
      * @param mixed $value
      * @return $this
      */
-    public function set(string $key, $value): Container
+    public function set(string $key, mixed $value): Container
     {
         $this->container[$key] = $value;
 

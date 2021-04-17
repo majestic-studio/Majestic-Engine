@@ -24,10 +24,6 @@ namespace Core\Service\Template\Theme;
 abstract class AbstractTheme
 {
     /**
-     * @var vue template
-     */
-    public bool $vue = true;
-    /**
      * @var string
      */
     public string $dir = '.';
@@ -60,7 +56,7 @@ abstract class AbstractTheme
     public array $block_data = [];
 
     /**
-     * Содержит в себе полнйы массив данных шаблона
+     * Содержит в себе полный массив данных шаблона
      *
      * @var array   - результат работы шаблона
      */
@@ -70,7 +66,7 @@ abstract class AbstractTheme
      * Очистка блоков шаблона.
      * Удаляет все блоки и переменные шаблона
      */
-    public function block_clear(): void
+    final public function block_clear(): void
     {
         $this->data = [];
         $this->block_data = [];
@@ -84,7 +80,7 @@ abstract class AbstractTheme
      * его переменных, чтобы данные не попали в встраиваемый
      * шаблон и остались лишь в своем родители
      */
-    public function global_clear(): void
+    final public function global_clear(): void
     {
         $this->data = [];
         $this->block_data = [];
@@ -99,7 +95,7 @@ abstract class AbstractTheme
      *
      * @param string $container - название страницы, либо .mjt файл
      */
-    public function return(string $container): void
+    final public function return(string $container): void
     {
         /**
          * Вывод результата через echo, можно так же использовать

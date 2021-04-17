@@ -19,6 +19,7 @@ namespace Core\Service\Localization;
 
 use Core\Service\Config\Config;
 use Core\Service\Path\Path;
+use Core\Service\Settings\Setting;
 use DI;
 
 
@@ -49,7 +50,7 @@ class I18n
      */
     public function get(string $key, array $data = []): string
     {
-        $lang = \DI::instance()->get('lang');
+        $lang = DI::instance()->get('lang');
         $text = isset($lang[$key]) ? $lang[$key] : '';
 
         if (!empty($data)) {
@@ -69,7 +70,7 @@ class I18n
         $path    = static::path($module) . $file . '.ini';
         $content = parse_ini_file($path, true);
 
-        $lang = \DI::instance()->get('lang') ?: [];
+        $lang = DI::instance()->get('lang') ?: [];
 
         foreach ($content as $key => $value) {
             $keyLang = str_replace('/', '.', $file) . '.' . $key;
@@ -83,6 +84,7 @@ class I18n
             }
         }
 
+
         \DI::instance()->set('lang', $lang);
 
         return $this;
@@ -92,6 +94,7 @@ class I18n
      * Gets all the valid modules.
      *
      * @return array
+     * @throws \JsonException
      */
     public function all(): array
     {
@@ -99,19 +102,21 @@ class I18n
         $module = \DI::instance()->get('module');
 
         $localizations = [];
-        $path = path('modules') . sprintf('/%s/Language/', $module->module);
+
+        $path = new Path();
+        $path = $path->Module() . sprintf('/%s/Language/', $module->module);
 
         foreach (scandir($path) as $localization) {
             // Ignore hidden directories.
-            if ($localization === '.' || $localization === '..') continue;
+            if ($localization === '.' || $localization === '..') {
+                continue;
+            }
 
             // Does the language have a valid lang.php?
             $local = $path . $localization . '/lang.json';
             if (is_file($local)) {
                 // Add it to the lang array.
-                array_push($localizations, json_decode(
-                    file_get_contents($local)
-                ));
+                $localizations[] = json_decode(file_get_contents($local), true, 512, JSON_THROW_ON_ERROR);
             }
         }
 
@@ -124,14 +129,14 @@ class I18n
      */
     private static function path(string $moduleName = ''): string
     {
-        $activeLanguage = 'rus';
+        $activeLanguage = Config::item('defaultLanguage', 'main');
 
-        if ($activeLanguage == '') {
+        if ($activeLanguage === '') {
             $activeLanguage = Config::item('default_lang');
         }
 
-        /** @var Module $module */
-        $module = \DI::instance()->get('module');
+
+        $module = DI::instance()->get('module');
 
         $moduleModuleName = $module->module;
 
@@ -139,8 +144,8 @@ class I18n
             $moduleModuleName = $moduleName;
         }
 
-        $p = new Path();
-        $path = $p->Module() . sprintf('/%s/Language/%s/', $moduleModuleName, $activeLanguage);
+        $path = new Path();
+        $path = $path->Module() . sprintf('/%s/Language/%s/', $moduleModuleName, $activeLanguage);
 
         return $path;
     }

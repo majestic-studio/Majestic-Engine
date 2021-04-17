@@ -75,7 +75,7 @@ class Header extends AbstractHeader
      */
 	public static function code404(): void
     {
-		header('HTTP/1.0 404 Not Found');
+		header('HTTP/2.0 404 Not Found');
 	}
 
 	public static function allowAPI(): void

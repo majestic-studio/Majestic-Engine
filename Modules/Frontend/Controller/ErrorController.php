@@ -23,9 +23,7 @@ class ErrorController extends FrontendController
 	 */
 	public function page404(): View
 	{
-        Header::code404();
-		# Данные массива $data
-
+	    Header::code(404);
 		return View::make('404', $this->data);
 	}
 }

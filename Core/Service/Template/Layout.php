@@ -30,14 +30,14 @@ class Layout
 	/**
 	 * @var array - Макет просмотра данных.
 	 */
-    protected static array $data = [];
+    private static array $data = [];
 
     /**
      * Вид макета страницы
      *
      * @var View
      */
-    protected static View $view;
+    private static View $view;
 
 	/**
 	 * Получает данные макета.
@@ -53,9 +53,9 @@ class Layout
 	 * Устанавливает данные макета.
 	 *
 	 * @param string $key
-	 * @param $value
+	 * @param mixed $value
 	 */
-	public static function set(string $key, $value): void
+	public static function set(string $key, mixed $value): void
     {
 		static::$data[$key] = $value;
 	}
