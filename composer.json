@@ -1,15 +1,14 @@
 {
-    "name": "majestic-framework [engine]",
-    "description": "Majestic Framework - создай свой потрясающий сайт вместе с нами!",
+    "name": "zerxa/majestic-engine",
+    "description": "Majestic Engine",
+    "type": "project",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Stanislav Boltov",
-            "email": "ZerxaFun@gmail.com",
-            "homepage": "https://zerxafun.github.io",
-            "role": "Developer"
+            "name": "Zerxa",
+            "email": "zerxafun@gmail.com"
         }
     ],
-    "license": "GPL v3",
     "require": {
         "php" : ">=8.0"
     },

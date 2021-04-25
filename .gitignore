@@ -1,7 +1,11 @@
 .DS_Store
 node_modules
 /vendor
-/resources
+
+# Resources
+/resources/dist
+/resources/node_modules
+/resources/src
 
 # local env files
 .env.local
@@ -21,9 +25,9 @@ yarn-error.log*
 *.sln
 *.sw?
 
-
 # Files
 server.crt
 server.key
 composer.lock
+composer.phar
 Nginx_1.19_vhost.conf
