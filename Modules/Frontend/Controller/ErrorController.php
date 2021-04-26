@@ -24,6 +24,11 @@ class ErrorController extends FrontendController
 	public function page404(): View
 	{
 	    Header::code(404);
+        # Данные массива $data
+        $this->setData('title', 'Ошибка 404, страница не найдена');
+        $this->setData('description', 'Ошибка 404, страница не найдена!');
+        $this->setData('keywords', 'Ошикбка 404, страница не найдена, воспользуйтесь поиском');
+
 		return View::make('404', $this->data);
 	}
 }

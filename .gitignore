@@ -5,7 +5,6 @@ node_modules
 # Resources
 /resources/dist
 /resources/node_modules
-/resources/src
 
 # local env files
 .env.local
