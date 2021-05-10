@@ -17,7 +17,7 @@
 namespace Core\Service\Routing;
 
 
-use Core\Bootstrap;
+use Core\Core;
 use Core\Service\API\API;
 use Core\Service\Http\Request;
 use Core\Service\Http\Uri;
@@ -57,7 +57,7 @@ class Router
 	public static function initialize(): void
     {
 		# Запуск системы
-		Bootstrap::start();
+		Core::start();
 
 		# Загрузка роутера
 		static::routes();

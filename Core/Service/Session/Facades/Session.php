@@ -1,18 +1,6 @@
 <?php
-/**
- *=====================================================
- * Majestic Engine - by Zerxa Fun (Majestic Studio)   =
- *-----------------------------------------------------
- * @url: http://majestic-studio.ru/                   -
- *-----------------------------------------------------
- * @copyright: 2020 Majestic Studio and ZerxaFun      -
- *=====================================================
- *                                                    =
- *                                                    =
- *                                                    =
- *=====================================================
- */
 
+declare(strict_types=1);
 
 namespace Core\Service\Session\Facades;
 
@@ -21,12 +9,9 @@ use Core\Service\Session\Session as Factory;
 use Core\Service\Session\SessionDriver;
 
 
-/**
- * Class Session
- * @package Core\Service\Session\Facades
- */
 class Session
 {
+
     /**
 	 * Экземпляр класса сеанса.
 	 *

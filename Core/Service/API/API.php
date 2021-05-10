@@ -34,6 +34,7 @@ class API
     {
         $module = new Router;
         $API = (array) $data->APIinstance->data;
+        $APIResult = (array) $data->APIinstance->data['result'][0];
         $access = new Access;
 
         $validation = $access->permit($module::module()->assets);
@@ -75,7 +76,7 @@ class API
                    Request::$method,
                'http-code'  => $API['code']
            ],
-           'result'         => $API['result'],
+           'result'         => $APIResult,
            'error'         =>  $error,
            'info'           => [
                'access-level'  => $module::module()->assets,

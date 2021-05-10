@@ -1,18 +1,4 @@
 <?php
-/**
- *=====================================================
- * Majestic Engine - by Zerxa Fun (Majestic Studio)   =
- *-----------------------------------------------------
- * @url: http://majestic-studio.ru/                   -
- *-----------------------------------------------------
- * @copyright: 2020 Majestic Studio and ZerxaFun      -
- *=====================================================
- *                                                    =
- *                                                    =
- *                                                    =
- *=====================================================
- */
-
 
 namespace Core\Service\Session;
 
@@ -23,15 +9,16 @@ namespace Core\Service\Session;
  */
 class Session
 {
+
     /**
      * @var bool - сессия инициализирована.
      */
-    protected static bool $initialized = false;
+    protected static $initialized = false;
 
     /**
      * @var SessionDriver - активный драйвер сеанса.
      */
-    protected static SessionDriver $driver;
+    protected static $driver;
 
     /**
      * Создать новую сессию.

@@ -5,14 +5,20 @@ namespace Modules\Geolocation\Controller;
 
 
 use APIController;
+use Core\Service\Geolocation\Geolocation;
 
 
 class GeolocationController extends APIController
 {
-    public function about(): void
+    public function get(): void
     {
+
+        /**
+         * TODO::Реальный IP пользователя + обработчик неизвестных ошибок.
+         */
+        $geo = new Geolocation();
         $result = [
-            'Массив результата' => 'Главная страница',
+            $geo->get('185.143.178.82')
         ];
 
         $error = [

@@ -19,7 +19,5 @@ class APIController
         $this->data['error'] = $error;
         $this->data['code'] = $status_code;
         $this->nuxt = $nuxt;
-
-
     }
 }

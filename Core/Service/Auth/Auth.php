@@ -16,9 +16,9 @@
 
 namespace Core\Service\Auth;
 
-
 use Core;
 use Core\Service\Session\Facades\Session;
+
 
 
 /**
@@ -56,8 +56,8 @@ final class Auth
          * если нет, то ничего не выполняем.
          */
         if (Session::has('auth.user') && Session::has('auth.authorized')) {
-            static::$authorized = Session::get('auth.authorized');
-            static::$user       = Session::get('auth.user');
+            self::$authorized = Session::get('auth.authorized');
+            self::$user       = Session::get('auth.user');
         }
     }
 

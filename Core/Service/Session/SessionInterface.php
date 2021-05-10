@@ -1,26 +1,8 @@
 <?php
-/**
- *=====================================================
- * Majestic Engine - by Zerxa Fun (Majestic Studio)   =
- *-----------------------------------------------------
- * @url: http://majestic-studio.ru/                   -
- *-----------------------------------------------------
- * @copyright: 2020 Majestic Studio and ZerxaFun      -
- *=====================================================
- *                                                    =
- *                                                    =
- *                                                    =
- *=====================================================
- */
-
 
 namespace Core\Service\Session;
 
 
-/**
- * Interface SessionInterface
- * @package Core\Service\Session
- */
 interface SessionInterface
 {
 
@@ -29,14 +11,14 @@ interface SessionInterface
      *
      * @return bool
      */
-    public function initialize(): bool;
+    public function initialize();
 
     /**
      * Завершает сессию.
      *
      * @return bool
      */
-    public function finalize(): bool;
+    public function finalize();
 
 	/**
 	 * Вставляет данные в сеанс.
@@ -84,14 +66,14 @@ interface SessionInterface
      *
      * @return array
      */
-    public function all(): array;
+    public function all();
 
     /**
 	 * Устанавливает флэш-данные, которые живут только для одного запроса, если данные не были переданы
 	 * он попытается найти сохраненные данные.
      *
-     * @param string $name
-     * @param $data
+     * @param  string  $name  The name of the flash data.
+     * @param  array   $data  The data to store in the session.
      * @return mixed
      */
     public function flash(string $name, $data = null);
@@ -109,6 +91,6 @@ interface SessionInterface
      *
      * @return array
      */
-    public function kept(): array;
+    public function kept();
 
 }

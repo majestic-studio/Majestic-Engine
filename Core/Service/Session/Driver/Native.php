@@ -1,30 +1,11 @@
 <?php
-/**
- *=====================================================
- * Majestic Engine - by Zerxa Fun (Majestic Studio)   =
- *-----------------------------------------------------
- * @url: http://majestic-studio.ru/                   -
- *-----------------------------------------------------
- * @copyright: 2020 Majestic Studio and ZerxaFun      -
- *=====================================================
- *                                                    =
- *                                                    =
- *                                                    =
- *=====================================================
- */
-
 
 namespace Core\Service\Session\Driver;
-
 
 use Core\Service\Session\SessionDriver;
 use Core\Service\Session\SessionInterface;
 
 
-/**
- * Class Native
- * @package Core\Service\Session\Driver
- */
 class Native extends SessionDriver implements SessionInterface
 {
 
@@ -39,19 +20,16 @@ class Native extends SessionDriver implements SessionInterface
     public function initialize(): bool
 	{
         # Начало сеанса, если заголовки еще не были отправлены.
-        if (!headers_sent()) {
+        if (!headers_sent())
             session_start();
-        }
 
         # Инициализируйте основной массив сессии, если он не был установлен.
-        if (!isset($_SESSION[$this->key])) {
+        if (!isset($_SESSION[$this->key]))
             $_SESSION[$this->key] = [];
-        }
 
         # Выполнить сеанс с ключом данных флэш.
-        if (!isset($_SESSION['flash'])) {
+        if (!isset($_SESSION['flash']))
             $_SESSION['flash'] = [];
-        }
 
         # Успешно инициализирован.
         return true;
@@ -64,9 +42,8 @@ class Native extends SessionDriver implements SessionInterface
 	{
         # Удалить флэш-данные, которые не сохраняются.
         foreach (array_keys($this->kept()) as $name) {
-            if (!in_array($name, $this->keep, true)) {
+            if (!in_array($name, $this->keep, true))
                 unset($_SESSION['flash'][$name]);
-            }
 
         }
 
@@ -113,9 +90,8 @@ class Native extends SessionDriver implements SessionInterface
 	 */
     public function forget(string $name): SessionDriver
 	{
-        if ($this->has($name)) {
+        if ($this->has($name))
             unset($_SESSION[$this->key][$name]);
-        }
 
         return $this;
     }
@@ -146,13 +122,14 @@ class Native extends SessionDriver implements SessionInterface
     public function flash(string $name, $data = null)
 	{
         # Если данные нулевые, вернуть то, что сохранено
-        if ($data === null) {
+        if ($data === null)
             return $_SESSION['flash'][$name] ?? false;
-        }
 
-        $this->keep($name);
+        else
+			# Сохраняем это для следующего запроса.
+            $this->keep($name);
 
-        # Хранить данные.
+			# Хранить данные.
             return $_SESSION['flash'][$name] = $data;
     }
 
@@ -163,9 +140,8 @@ class Native extends SessionDriver implements SessionInterface
     public function keep(string $name): SessionDriver
 	{
         # Сохранить в массиве keep, если его там еще нет.
-        if (!in_array($name, $this->keep, true)) {
-            $this->keep[] = $name;
-        }
+        if (!in_array($name, $this->keep, true))
+            array_push($this->keep, $name);
 
         # Возвращаем объект сеанса.
         return $this;
@@ -174,7 +150,7 @@ class Native extends SessionDriver implements SessionInterface
 	/**
 	 * @return array
 	 */
-    public function kept(): array
+    public function kept()
 	{
         return $this->keep;
     }

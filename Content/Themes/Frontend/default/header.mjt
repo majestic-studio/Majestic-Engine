@@ -1,3 +1,31 @@
 <header>
-    das
+    <div class="promo-header">
+        <div class="content container df">
+            <ul class="df">
+                <li id="region">
+                    <a href="#" rel="" title="Местонахождение" class="red-hover region">Местонахождения..</a>
+                </li>
+            </ul>
+
+            <div class="services">
+                <div class="dfr">
+                    [guest]
+                    <a href="/account/login" class="dfr">Вход</a>  <a href="/account/register" class="dfr">Регистрация</a>
+                    [/guest]
+
+                    [user]
+                    <a href="/account/" class="dfr">Мой профиль</a>
+                    [/user]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="content container df">
+            <div class="df logo-brand">
+
+            </div>
+        </div>
+    </div>
 </header>

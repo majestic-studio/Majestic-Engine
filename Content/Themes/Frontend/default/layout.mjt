@@ -8,13 +8,15 @@
         <title>{title}</title>
         <meta name="keywords" content="{keywords}" />
         <meta name="description" content="{description}">
-        <link rel="stylesheet" href="{DIR}assets/css/app.css">
+        <link rel="stylesheet" href="{DIR}/assets/css/app.css">
+        <link rel="stylesheet" href="{DIR}/assets/fontawesome/css/all.min.css">
     </head>
     <body>
         {header}
-        -- <br>
-        <div id="app"></div>
-        -- <br>
-        <script src="{DIR}assets/js/app.js"></script>
+        <br><br><br><br>
+        {content}
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        {footer}
+        <script src="{DIR}/assets/js/app.js"></script>
     </body>
 </html>

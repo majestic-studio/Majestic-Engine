@@ -38,7 +38,7 @@ use Exception;
  * Class Bootstrap
  * @package Bootstrap
  */
-class Bootstrap
+class Core
 {
     /**
      * Запуск системы.

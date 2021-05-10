@@ -29,6 +29,7 @@ class Header extends AbstractHeader
     {
         return http_response_code($code);
     }
+
     /**
      * Обработка отправки запроса Content Type страницы
      * $header принимает string, но в случаи пустого

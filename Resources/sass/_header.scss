@@ -1,0 +1,73 @@
+@import "color";
+
+header {
+  -webkit-box-shadow: 0 10px 10px -10px rgb(0 0 0 / 10%);
+  box-shadow: 0 10px 10px -10px rgb(0 0 0 / 10%);
+}
+
+header > .promo-header {
+  font: 13px/1.5 Arial,'Helvetica Neue',Helvetica,sans-serif;
+  width: 100%;
+  border-bottom: 1px solid #d8d8d8;
+  background-color: #f7f7f7;
+}
+
+.promo-header > .content {
+    position: relative;
+    height: 44px;
+    margin: 0 auto;
+    background-color: transparent;
+    padding: 0 18px;
+}
+
+.promo-header > .content::before {
+  content: '';
+  border-bottom: 1px solid #d8d8d8;
+  left: 0;
+  right: 0;
+  position: absolute;
+  bottom: -1px;
+  z-index: 1;
+}
+
+.content > ul {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding: 12px 0;
+}
+
+.content > ul > li {
+    margin-right: 14px;
+    white-space: nowrap;
+}
+
+.content > ul > li > a {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: inherit;
+  text-decoration: none;
+  outline: 0;
+  background-color: transparent;
+  color: #a1a1a1;
+}
+
+.region > i::before {
+  font-style: normal;
+  font-family: "Font Awesome 6 Pro", sans-serif;
+  font-weight: 900;
+  content: "\f601";
+}
+
+.content > .services {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-height: 44px;
+}
+.services > .dfr > a {
+  margin: auto;
+}
