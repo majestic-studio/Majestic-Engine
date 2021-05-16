@@ -8,8 +8,8 @@
         <title>{title}</title>
         <meta name="keywords" content="{keywords}" />
         <meta name="description" content="{description}">
-        <link rel="stylesheet" href="{DIR}/assets/css/app.css">
-        <link rel="stylesheet" href="{DIR}/assets/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="{THEME}/assets/css/app.css">
+        <link rel="stylesheet" href="{THEME}/assets/fontawesome/css/all.min.css">
     </head>
     <body>
         {header}
@@ -17,6 +17,7 @@
         {content}
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         {footer}
-        <script src="{DIR}/assets/js/app.js"></script>
+        <script src="{THEME}/assets/js/app.js"></script>
+        <script src="{THEME}/test.js"></script>
     </body>
 </html>

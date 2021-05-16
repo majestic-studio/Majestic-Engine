@@ -30,8 +30,13 @@ class Define
     public const VERSION            = '0.2.0';
     public const PHP_MIN            = '8.0';
     public const SECURITY_KEY       = 'a32#fidgrwly328or&*T#GRL&W';
-    public const SERVER_NAME        = 'majestic.io';
 
+
+    public static function base(bool $host = false)
+    {
+        if($host === true) return $_SERVER['HTTP_HOST'];
+        else return '//' . $_SERVER['HTTP_HOST'];
+    }
 
     /**
      * Вывод времени системы в цифровом формате:

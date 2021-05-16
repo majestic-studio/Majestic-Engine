@@ -10,10 +10,10 @@ use Core\Service\JWT\JWT;
 class AuthJWT
 {
 
-    public function generationToken(array $user)
+    public function generationToken(array $user): string
     {
         $payload = [
-            'iss' => Define::SERVER_NAME,
+            'iss' => Define::base(true),
             "aud" => "majestic.io",
             "iat" => 1356999524,
             "nbf" => 1357000000,
@@ -28,7 +28,7 @@ class AuthJWT
         return JWT::encode($payload, Define::SECURITY_KEY, 'HS256');
     }
 
-    public function getUserToken(string $token)
+    public function getUserToken(string $token): object|string
     {
         if($token === 'null') {
             $result = '';

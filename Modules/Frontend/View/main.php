@@ -1,21 +1,21 @@
 <?php
 
+use Core\Define;
 use Core\Service\Auth\Auth;
 use Core\Service\Client\Client;
 
-$themes = 'Content/Themes/Frontend/default/';
-$themesDir = '//majestic.loc/Content/Themes/Frontend/default';
+$themes = 'Content/Themes/Frontend/default';
 $tpl = new Theme;
 $tpl->dir = $themes;
 $tpl->load_template('layout.mjt');
 
 # Структура шаблона
-
+$tpl->set('{BASE_URL}', Define::base());
+$tpl->set('{THEME}', Define::base() . '/' . $tpl->dir);
 $tpl->set('{lang}', Client::language());
 $tpl->set('{content}', Layout::content());
 $tpl->set('{header}', $tpl->sub_load_template('header.mjt'));
 $tpl->set('{footer}', $tpl->sub_load_template('footer.mjt'));
-$tpl->set('{DIR}', $themesDir);
 
 $tpl->set('{title}', $data['title']);
 $tpl->set('{description}', $data['description']);

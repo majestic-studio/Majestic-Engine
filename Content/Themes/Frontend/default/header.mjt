@@ -3,29 +3,115 @@
         <div class="content container df">
             <ul class="df">
                 <li id="region">
-                    <a href="#" rel="" title="Местонахождение" class="red-hover region">Местонахождения..</a>
+                    <a href="#" rel="" title="Местонахождение" id="open-menu-region" class="red-hover region">Местонахождения..</a>
                 </li>
             </ul>
 
             <div class="services">
                 <div class="dfr">
                     [guest]
-                    <a href="/account/login" class="dfr">Вход</a>  <a href="/account/register" class="dfr">Регистрация</a>
+                        <a href="/account/login" class="dfr">Вход</a> <a href="/account/register" class="dfr">Регистрация</a>
                     [/guest]
 
                     [user]
-                    <a href="/account/" class="dfr">Мой профиль</a>
+                        <a href="/account/" class="dfr">Мой профиль</a>
                     [/user]
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="header">
-        <div class="content container df">
-            <div class="df logo-brand">
-
+    <div class="header df">
+        <div class="container df">
+            <div class="logo-brand df">
+                <div class="logo-container">
+                    <a href="{BASE_URL}"></a>
+                </div>
             </div>
+            <div id="category-menu" class="df">
+                <div class="text-btn df">
+                            <button type="button" id="drop-header-menu" class="cm__text_icon">
+                                <span>
+                                    Каталог
+                                </span>
+                            </button>
+                    </div>
+                <div class="search" itemtype="https://schema.org/WebSite">
+                    <meta itemprop="url" content="{BASE_URL}">
+                    <form action="/search" itemtype="https://schema.org/SearchAction" role="search" aria-label="Найти товар">
+                        <div class="body-search df">
+                            <div class="search-container df">
+                                <input type="text" id="header-search" itemprop="query-input" name="text" autocomplete="off" class="search_input" placeholder="Искать товары" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                <button class="hidden-search"></button>
+                            </div>
+                            <button type="submit" class="header-search-btn df" tabindex="0" role="button">
+                                <span>
+                                    Найти
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="user-header-menu df">
+                    <div class="group-btn df">
+                        <div class="promotions">
+                            <a href="/user/promotions/">
+                                <div class="item-uhm">
+                                    <div class="support-uhm">
+                                        <span class="counter_header"> 5 </span>
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <span>
+                                        Избранное
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="promotions">
+                            <a href="/user/promotions/">
+                                <div class="item-uhm">
+                                    <div class="support-uhm">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <span>
+                                        Избранное
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="promotions">
+                            <a href="/user/promotions/">
+                                <div class="item-uhm">
+                                    <div class="support-uhm">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <span>
+                                        Избранное
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="promotions">
+                            <a href="/user/promotions/">
+                                <div class="item-uhm">
+                                    <div class="support-uhm">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <span>
+                                        Избранное
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
 </header>
+
+<div class="dhm">
+    sad
+</div>
