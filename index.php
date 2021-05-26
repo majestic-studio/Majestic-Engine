@@ -19,12 +19,6 @@
 use Core\Service\Routing\Router;
 
 /**
- * @Majestic - константа определяющая проект, может быть true, либо false.
- * Проверка от прямого обращения к файлу.
- */
-define('MAJESTIC', true);
-
-/**
  * @TIME - системная константа определяющая время запуска скрипта
  */
 define('TIME', microtime(true));
@@ -33,7 +27,7 @@ define('TIME', microtime(true));
  * @ROOT_DIR - константа определяющая корневую папку проекта {src / core}.
  * Служит для удобного обращения к структуре проекта из любой точки, либо файла.
  */
-define('ROOT_DIR', __DIR__);
+const ROOT_DIR = __DIR__;
 
 /**
  * Подключение авто загрузчика классов Composer (PSR-4)

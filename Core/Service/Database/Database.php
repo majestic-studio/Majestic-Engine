@@ -34,7 +34,7 @@ class Database
     /**
      * @var $connection
      */
-    protected static $connection;
+    protected static mixed $connection;
 
     /**
      * @return PDO
@@ -133,7 +133,7 @@ class Database
     /**
      * @return mixed
      */
-    public static function getConnection()
+    public static function getConnection(): mixed
     {
         return self::$connection;
     }

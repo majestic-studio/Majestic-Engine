@@ -29,20 +29,9 @@ class Engine
     /**
      * @return string
      */
-    public function detectViewDirectory(): string
+    public function ViewDirectory(): string
     {
         $module = Router::module();
         return sprintf('/Modules/%s/View/', $module->module);
     }
-
-    /**
-     * @return string
-     */
-    public function detectVueDirectory(): string
-    {
-        $module = Router::module();
-        return sprintf('/Modules/%s/Vue/', $module->module);
-    }
-
-
 }

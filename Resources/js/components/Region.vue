@@ -1,5 +1,5 @@
 <template>
-    <a href="#" rel="" title="Местонахождение" class="red-hover region">{{ region }} <i></i></a>
+    <a href="#" rel="" title="Местонахождение">{{ region }} <i></i></a>
 </template>
 
 <script>

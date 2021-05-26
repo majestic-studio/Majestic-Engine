@@ -1,12 +1,12 @@
 <template>
-  <div class="Search">
-    <p>Поиск..</p>
+  <div class="global-menu">
+    sad
   </div>
 </template>
 
 <script>
 export default {
-  name: "Search"
+  name: "GlobalNavMenu"
 }
 </script>
 

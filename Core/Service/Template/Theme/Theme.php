@@ -149,7 +149,7 @@ class Theme extends AbstractTheme
     }
 
     /**
-     * @param $mjt_name
+     * @param string $mjt_name
      * @return false|string
      */
     final public function sub_load_template(string $mjt_name): bool|string
@@ -164,7 +164,7 @@ class Theme extends AbstractTheme
 
     /**
      * @param string $container
-     * @return mixed
+     * @return string|void
      */
     public function result(string $container)
     {

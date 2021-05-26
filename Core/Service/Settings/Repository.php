@@ -35,7 +35,7 @@ class Repository
      * @param mixed $data The item data.
      * @return void
      */
-    public static function store(string $section, $data): void
+    public static function store(string $section, mixed $data): void
     {
         /**
          * Проверка, что группа значений является массивом
@@ -54,7 +54,7 @@ class Repository
      * @param string $key
      * @return mixed
      */
-    public static function retrieve(string $section, string $key)
+    public static function retrieve(string $section, string $key): mixed
     {
         return static::$stored[$section][$key] ?? false;
     }
@@ -65,7 +65,7 @@ class Repository
      * @param string $section The item group.
      * @return mixed
      */
-    public static function retrieveGroup(string $section)
+    public static function retrieveGroup(string $section): mixed
     {
         return static::$stored[$section] ?? false;
     }

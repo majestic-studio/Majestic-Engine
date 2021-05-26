@@ -44,7 +44,7 @@ class Logger
 	 * Пусть файловой системы к папке файла
 	 * @var string
 	 */
-    private string $file_dir = CORE_DIR . DIRECTORY_SEPARATOR . 'Uploads' . DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR;
+    private string $file_dir = ROOT_DIR . DIRECTORY_SEPARATOR . 'Uploads' . DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR;
 
 
 	public function logger(string $user_name, string $message): array

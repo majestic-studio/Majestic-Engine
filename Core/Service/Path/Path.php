@@ -59,19 +59,13 @@ class Path
          * В случаи пустой секции - выводим путь к корню.
          * @var $section
          */
-        switch (strtolower($section))
-        {
-            case 'config':
-                return $uri . '/Config';
-            case 'modules':
-                return $uri . '/Modules';
-            case 'content':
-                return $uri . '/Content';
-            case 'library':
-                return $uri . '/Library';
-            default:
-                return $uri . '/';
-        }
+        return match (strtolower($section)) {
+            'config' => $uri . '/Config',
+            'modules' => $uri . '/Modules',
+            'content' => $uri . '/Content',
+            'library' => $uri . '/Library',
+            default => $uri . '/',
+        };
     }
 
     /**
@@ -109,21 +103,14 @@ class Path
         /**
          * Кейсы раздела Content, в случаи пустого кейса выводим корень Content
          */
-        switch (strtolower($section))
-        {
-            case 'themes':
-                return $path . '/Themes';
-            case 'frontend':
-                return $path . '/Themes/Frontend';
-            case 'backend':
-                return $path . '/Themes/Backend';
-            case 'plugins':
-                return $path . '/Plugins';
-            case 'vue':
-                return $path . '/Resources';
-            default:
-                return $path;
-        }
+        return match (strtolower($section)) {
+            'themes' => $path . '/Themes',
+            'frontend' => $path . '/Themes/Frontend',
+            'backend' => $path . '/Themes/Backend',
+            'plugins' => $path . '/Plugins',
+            'vue' => $path . '/Resources',
+            default => $path,
+        };
     }
 
 
@@ -148,15 +135,11 @@ class Path
         /**
          * Кейсы раздела Modules, в случаи пустого кейса выводим корень Modules
          */
-        switch (strtolower($section))
-        {
-            case 'frontend':
-                return $path . '/Frontend';
-            case 'backend':
-                return $path . '/Backend';
-            default:
-                return $path;
-        }
+        return match (strtolower($section)) {
+            'frontend' => $path . '/Frontend',
+            'backend' => $path . '/Backend',
+            default => $path,
+        };
     }
 
     final public function Library(string $section = '', bool $absolute = true): string
@@ -170,14 +153,10 @@ class Path
         /**
          * Кейсы раздела Modules, в случаи пустого кейса выводим корень Modules
          */
-        switch (strtolower($section))
-        {
-            case 'vendor':
-                return $path . '/Vendor';
-            case 'theme':
-                return $path . '/Themes';
-            default:
-                return $path;
-        }
+        return match (strtolower($section)) {
+            'vendor' => $path . '/Vendor',
+            'theme' => $path . '/Themes',
+            default => $path,
+        };
     }
 }

@@ -20,6 +20,7 @@ namespace Core\Service\Template;
 use Core;
 use Core\Service\Routing\Router;
 use Exception;
+use JetBrains\PhpStorm\Pure;
 use RuntimeException;
 
 
@@ -42,7 +43,6 @@ class View
     /**
      * @var string
      */
-    protected string $pathTemplates = '';
 	public const TEMPLATE_EXTENSION = '.php';
 	protected static Engine $engine;
 
@@ -58,7 +58,7 @@ class View
     /**
      * @return Engine
      */
-	public static function engine(): Engine
+	#[Pure] public static function engine(): Engine
 	{
         return static::$engine ?? new Engine();
     }
@@ -76,22 +76,14 @@ class View
 
 	public static function theme(): string
 	{
-		return static::engine()->detectViewDirectory();
+		return static::engine()->ViewDirectory();
 	}
-
-	/**
-	 * @return string
-	 */
-	public static function pathTemplates(): string
-    {
-        return Router::module()->viewPath;
-    }
 
 	/**
 	 * @return string
      * @throws Exception
 	 */
-	public function respond()
+	public function respond(): string
     {
 		# Получить экземпляр действия модуля.
 		$instance = Router::module()->instance();
@@ -111,17 +103,8 @@ class View
      */
     public static function path(): string
     {
-        return ROOT_DIR . static::engine()->detectViewDirectory();
+        return ROOT_DIR . static::engine()->ViewDirectory();
     }
-
-    /**
-     * @return string
-     */
-    public static function pathVue(): string
-    {
-        return ROOT_DIR . static::engine()->detectVueDirectory();
-    }
-
 
 	/**
 	 * @return string

@@ -25,10 +25,7 @@ namespace Core\Service\DI;
  */
 class Container
 {
-    /**
-     * @var mixed
-     */
-    protected static $instance;
+    private static $instance;
 
     /**
      * Dependency container.
@@ -43,7 +40,7 @@ class Container
      * @param string $key
      * @return mixed
      */
-    public function get(string $key)
+    public function get(string $key): mixed
     {
         return $this->has($key) ? $this->container[$key] : null;
     }

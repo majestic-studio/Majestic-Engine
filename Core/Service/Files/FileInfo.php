@@ -69,7 +69,7 @@ class FileInfo implements FileInterface
      * @return string|array
      * @throws Exception
      */
-    public function details(string $file, string $sub_folder, string $theme = '', string $folder = '', string $section = '')
+    public function details(string $file, string $sub_folder, string $theme = '', string $folder = '', string $section = ''): array|string
     {
         $file_info = new self();
         if ($section === '') {

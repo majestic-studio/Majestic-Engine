@@ -82,26 +82,18 @@ class Statement
      * @param  int    $type
      * @return Statement
      */
-    public function bind($parameter, $value, int $type = 0): Statement
+    public function bind(mixed $parameter, mixed $value, int $type = 0): Statement
     {
         /**
          * Определение типа запроса, если он не был установлен
          */
         if ($type === 0) {
-            switch (strtolower(gettype($value)))
-            {
-                case 'integer':
-                    $type = PDO::PARAM_INT;
-                    break;
-                case 'boolean':
-                    $type = PDO::PARAM_BOOL;
-                    break;
-                case 'null':
-                    $type = PDO::PARAM_NULL;
-                    break;
-                default:
-                    $type = PDO::PARAM_STR;
-            }
+            $type = match (strtolower(gettype($value))) {
+                'integer' => PDO::PARAM_INT,
+                'boolean' => PDO::PARAM_BOOL,
+                'null' => PDO::PARAM_NULL,
+                default => PDO::PARAM_STR,
+            };
         }
 
         /**
@@ -138,7 +130,7 @@ class Statement
      *
      * @return object|bool
      */
-    public function fetch()
+    public function fetch(): object|bool
     {
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
