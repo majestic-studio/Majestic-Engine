@@ -30082,7 +30082,7 @@ __webpack_require__.e(/*! import() */ "resources_js_menu_js").then(__webpack_req
 
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_components_GlobalMenu_GlobalMenu__WEBPACK_IMPORTED_MODULE_3__.default).mount('#userMenu');
-(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_components_Region__WEBPACK_IMPORTED_MODULE_2__.default).mount('#region');
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_components_Region__WEBPACK_IMPORTED_MODULE_2__.default).mount('#drop-menu-region');
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_components_Search_Search__WEBPACK_IMPORTED_MODULE_1__.default).mount('#search');
 
 /***/ }),
@@ -32781,18 +32781,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-const _hoisted_1 = {
+const _hoisted_1 = { class: "region" }
+const _hoisted_2 = {
   href: "#",
   rel: "",
   title: "Местонахождение"
 }
-const _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", null, null, -1 /* HOISTED */)
+const _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", { class: "fas fa-angle-down" }, null, -1 /* HOISTED */)
+const _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"switcher\"><div class=\"switcher-item\"><span class=\"switcher-name\">Язык</span><div class=\"switcher-selector\"><a href=\"#\"><span> Georgia </span></a></div></div><div class=\"switcher-item\"><span class=\"switcher-name\">Валюта</span><div class=\"switcher-selector\"><a href=\"#\"><span> Lari </span></a></div></div></div>", 1)
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_1, [
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.region) + " ", 1 /* TEXT */),
-    _hoisted_2
-  ]))
+  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", _hoisted_2, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, [
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.region) + " ", 1 /* TEXT */),
+          _hoisted_3
+        ])
+      ])
+    ]),
+    _hoisted_4
+  ], 64 /* STABLE_FRAGMENT */))
 }
 
 /***/ }),

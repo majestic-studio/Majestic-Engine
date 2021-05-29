@@ -9,7 +9,7 @@
         <meta name="keywords" content="{keywords}" />
         <meta name="description" content="{description}">
         <link rel="stylesheet" href="{THEME}/assets/css/app.css">
-        <link rel="stylesheet" href="{THEME}/assets/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="{THEME}/assets/fonts/fontawesome/css/all.min.css">
     </head>
     <body class="body fontDefault">
         {header}

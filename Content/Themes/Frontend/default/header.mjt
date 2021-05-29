@@ -1,38 +1,16 @@
 <header>
     <div class="promo-header">
-        <div class="content df">
-            <div class="region">
-                <ul>
-                    <li id="region">
-                        <a href="#" rel="" title="Местонахождение" id="open-menu-region" class="red-hover region">Местонахождения..</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="services">
-                <div class="language">
-                    <ul>
-                        <li>
-                            Русский
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="login">
-                    <ul class="df">
-                        <li>
-                            <a href="/account/auth">
-                                Вход
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/account/register">
-                                Регистрация
-                            </a>
-                        </li>
-                    </ul>
+        <div class="container">
+            <div class="content">
+                <div class="setting">
+                    <div id="drop-menu-region">
+                        <div class="loading">
+                            <div class="search-skeleton">&nbsp;</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
 
         </div>
     </div>
@@ -47,7 +25,7 @@
             <div id="category-menu" class="df">
                 <div class="text-btn df">
                     <button id="drop-header-menu" class="cm__text_icon">
-                        <span class="dfr">
+                        <span>
                             <svg class="df" width="32" height="32" viewBox="0 0 100 100">
                                 <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
                                 <path class="line line2" d="M 20,50 H 80" />

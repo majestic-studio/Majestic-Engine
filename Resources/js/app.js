@@ -9,5 +9,5 @@ import GlobalNavMenu from './components/GlobalMenu/GlobalMenu'
 
 
 createApp(GlobalNavMenu).mount('#userMenu')
-createApp(Region).mount('#region')
+createApp(Region).mount('#drop-menu-region')
 createApp(Search).mount('#search')

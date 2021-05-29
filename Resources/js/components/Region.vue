@@ -1,7 +1,38 @@
 <template>
+  <div class="region">
     <a href="#" rel="" title="Местонахождение">
-      {{ region }} <i></i>
+      <span>
+        {{ region }} <i class="fas fa-angle-down"></i>
+      </span>
     </a>
+  </div>
+    <div class="switcher">
+      <div class="switcher-item">
+        <span class="switcher-name">Язык</span>
+
+        <div class="switcher-selector">
+          <a href="#">
+            <span>
+              Georgia
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="switcher-item">
+        <span class="switcher-name">Валюта</span>
+
+        <div class="switcher-selector">
+          <a href="#">
+            <span>
+              Lari
+            </span>
+          </a>
+        </div>
+      </div>
+
+  </div>
+
 </template>
 
 <script>
@@ -18,8 +49,6 @@ export default {
 
   },
   mounted() {
-
-
     axios
         .get(APIRequest)
         .then(response => {
