@@ -68,7 +68,7 @@ final class Auth
      */
     public static function authorized() : bool
     {
-        return static::$authorized;
+        return Auth::$authorized;
     }
 
     /**
@@ -78,7 +78,7 @@ final class Auth
      */
     public static function user(): object
     {
-        return static::$user;
+        return Auth::$user;
     }
 
     /**
@@ -92,8 +92,8 @@ final class Auth
         Session::put('auth.authorized', true);
         Session::put('auth.user', $user);
 
-        static::$authorized = true;
-        static::$user       = $user;
+        Auth::$authorized = true;
+        Auth::$user       = $user;
     }
 
     /**
@@ -107,8 +107,8 @@ final class Auth
         Session::put('auth.authorizedUser', true);
         Session::put('auth.userUser', $user);
 
-        static::$authorized = true;
-        static::$user       = $user;
+        Auth::$authorized = true;
+        Auth::$user       = $user;
     }
 
     /**
@@ -121,8 +121,8 @@ final class Auth
         Session::forget('auth.authorized');
         Session::forget('auth.user');
 
-        static::$authorized = false;
-        $user       = null;
+        Auth::$authorized = false;
+        Auth::$user       = null;
     }
 
     /**
@@ -136,7 +136,7 @@ final class Auth
         Session::forget('auth.userUser');
         session_destroy();
 
-        static::$authorized = false;
-        static::$user       = null;
+        Auth::$authorized = false;
+        Auth::$user       = null;
     }
 }

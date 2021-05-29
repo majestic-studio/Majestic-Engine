@@ -23,6 +23,6 @@ class GeolocationController extends APIController
 
         $error = [
         ];
-        $this->setData(200, $error, $result);
+        $this->setData(200, $error, $result[0]);
     }
 }

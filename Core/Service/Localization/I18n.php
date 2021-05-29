@@ -19,8 +19,8 @@ namespace Core\Service\Localization;
 
 use Core\Service\Config\Config;
 use Core\Service\Path\Path;
-use Core\Service\Settings\Setting;
 use DI;
+use JsonException;
 
 
 /**
@@ -30,6 +30,7 @@ use DI;
  */
 class I18n
 {
+
     private static $instance;
 
     /**
@@ -51,7 +52,7 @@ class I18n
     public function get(string $key, array $data = []): string
     {
         $lang = DI::instance()->get('lang');
-        $text = isset($lang[$key]) ? $lang[$key] : '';
+        $text = $lang[$key] ?? '';
 
         if (!empty($data)) {
             $text = sprintf($text, ...$data);
@@ -65,7 +66,7 @@ class I18n
      * @param string $module
      * @return I18n
      */
-    public function load(string $file, string $module = '')
+    public function load(string $file, string $module = ''): static
     {
         $path    = static::path($module) . $file . '.ini';
         $content = parse_ini_file($path, true);
@@ -85,7 +86,7 @@ class I18n
         }
 
 
-        \DI::instance()->set('lang', $lang);
+        DI::instance()->set('lang', $lang);
 
         return $this;
     }
@@ -94,12 +95,11 @@ class I18n
      * Gets all the valid modules.
      *
      * @return array
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function all(): array
     {
-        /** @var Module $module */
-        $module = \DI::instance()->get('module');
+        $module = DI::instance()->get('module');
 
         $localizations = [];
 
@@ -107,7 +107,6 @@ class I18n
         $path = $path->Module() . sprintf('/%s/Language/', $module->module);
 
         foreach (scandir($path) as $localization) {
-            // Ignore hidden directories.
             if ($localization === '.' || $localization === '..') {
                 continue;
             }
@@ -129,7 +128,7 @@ class I18n
      */
     private static function path(string $moduleName = ''): string
     {
-        $activeLanguage = Config::item('defaultLanguage', 'main');
+        $activeLanguage = Config::item('defaultLanguage');
 
         if ($activeLanguage === '') {
             $activeLanguage = Config::item('default_lang');
@@ -145,8 +144,6 @@ class I18n
         }
 
         $path = new Path();
-        $path = $path->Module() . sprintf('/%s/Language/%s/', $moduleModuleName, $activeLanguage);
-
-        return $path;
+        return $path->Module() . sprintf('/%s/Language/%s/', $moduleModuleName, $activeLanguage);
     }
 }

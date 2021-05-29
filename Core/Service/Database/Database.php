@@ -129,12 +129,4 @@ class Database
     {
         return (int) static::$connection->lastInsertId();
     }
-
-    /**
-     * @return mixed
-     */
-    public static function getConnection(): mixed
-    {
-        return self::$connection;
-    }
 }

@@ -393,7 +393,7 @@ class Query
         /**
          * Метод выполнения запроса
          */
-        $this->run('read');
+        $this->run();
 
         /**
          * Получение результата
@@ -422,6 +422,28 @@ class Query
          * Получение результата.
          */
         return $records;
+    }
+
+    /**
+     * Получение всех элементов в json
+     *
+     * @param bool $json
+     * @return mixed
+     * @throws Exception
+     */
+    public function allJson(bool $json = false)
+    {
+        /**
+         * Метод выполнения запроса
+         */
+        $this->run();
+
+        /**
+         * Получение результата
+         */
+        $fetched = $this->stmt->all();
+
+        return $fetched;
     }
 
     /**

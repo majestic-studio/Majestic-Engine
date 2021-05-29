@@ -14,10 +14,11 @@ class AuthJWT
     {
         $payload = [
             'iss' => Define::base(true),
-            "aud" => "majestic.io",
+            "aud" => $_SERVER['HTTP_HOST'],
             "iat" => 1356999524,
             "nbf" => 1357000000,
-            'exp' => time()+600, 'uId' => 1,
+            'exp' => time()+600,
+            'uId' => 1,
             'data'  => [
                 'user'  => $user['username'],
                 'key'   => $user['key'],

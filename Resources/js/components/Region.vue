@@ -1,5 +1,7 @@
 <template>
-    <a href="#" rel="" title="Местонахождение">{{ region }} <i></i></a>
+    <a href="#" rel="" title="Местонахождение">
+      {{ region }} <i></i>
+    </a>
 </template>
 
 <script>
@@ -13,6 +15,7 @@ export default {
     return {
         region: null
     }
+
   },
   mounted() {
 
@@ -22,8 +25,13 @@ export default {
         .then(response => {
           const data = response.data.result
 
-          const city = data.city.name_en
-          const country = data.country.iso
+          let city = 'ФБР всё видит, '
+          let country = 'ФБР всё знает.'
+
+          if(data[0] !== false) {
+            city = data.city.name_en
+            country = data.country.iso
+          }
 
           let result = city + ', ' + country
 
@@ -37,10 +45,11 @@ export default {
 
           this.region = result
         })
+
   }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

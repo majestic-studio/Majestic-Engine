@@ -96,7 +96,7 @@ class Router
         if($moduleType['type'] === 'API') {
             $data = $module;
             $nuxt = $module->APIinstance->nuxt;
-            if ($data !== '') {
+            if ($data != '') {
                 $api = new API;
                 $api->data($data, $nuxt);
             }

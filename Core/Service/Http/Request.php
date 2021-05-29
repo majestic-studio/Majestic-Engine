@@ -36,16 +36,12 @@ class Request
      */
     public static function is(string $method = ''): bool
 	{
-        switch (strtolower($method)) {
-            case 'https':
-                return self::https();
-            case 'ajax':
-                return self::ajax();
-            case 'cli':
-                return self::cli();
-            default:
-                return $method === self::method();
-        }
+        return match (strtolower($method)) {
+            'https' => self::https(),
+            'ajax' => self::ajax(),
+            'cli' => self::cli(),
+            default => $method === self::method(),
+        };
     }
 
     /**

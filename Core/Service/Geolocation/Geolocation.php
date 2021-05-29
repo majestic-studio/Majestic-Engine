@@ -2,9 +2,6 @@
 
 namespace Core\Service\Geolocation;
 
-
-use Core\Service\Voku\ASCII;
-
 define ('SXGEO_FILE', 0);
 define ('SXGEO_MEMORY', 1);
 define ('SXGEO_BATCH',  2);
@@ -14,9 +11,9 @@ class Geolocation
 {
     protected $fh;
     protected string $ip1c;
-    protected $info;
-    protected $range;
-    protected $db_begin;
+    protected array|false $info;
+    protected mixed $range;
+    protected int|false $db_begin;
     protected $b_idx_str;
     protected $m_idx_str;
     protected $b_idx_arr;
@@ -144,7 +141,7 @@ class Geolocation
      * @param $max
      * @return float|int
      */
-    protected function search_db($str, $ipn, $min, $max)
+    protected function search_db($str, $ipn, $min, $max): float|int
     {
         if($max - $min > 1) {
             $ipn = substr($ipn, 1);
@@ -345,7 +342,7 @@ class Geolocation
      * @param $ip
      * @return mixed
      */
-    public function getCountryId($ip)
+    public function getCountryId($ip): mixed
     {
         if($this->max_city) {
             $tmp = $this->parseCity($this->get_num($ip));
@@ -359,7 +356,7 @@ class Geolocation
      * @param $ip
      * @return array|bool
      */
-    public function getCity($ip)
+    public function getCity($ip): bool|array
     {
         $seek = $this->get_num($ip);
         return $seek ? $this->parseCity($seek) : false;
@@ -369,7 +366,7 @@ class Geolocation
      * @param $ip
      * @return array|bool
      */
-    public function getCityFull($ip)
+    public function getCityFull($ip): bool|array
     {
         $seek = $this->get_num($ip);
         return $seek ? $this->parseCity($seek, 2) : false;

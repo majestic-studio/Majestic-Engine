@@ -23,3 +23,10 @@ if (Uri::segment(1) === 'api' ) {
         'action' => 'auth',
         'assets' => 'international',
     ]);
+
+    # Главная страница API;
+    APIRoute::api('get', '/api/v1/system/menu/', [
+        'controller' => 'GeneralMenu',
+        'action' => 'getSection',
+        'assets' => 'international',
+    ]);

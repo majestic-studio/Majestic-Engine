@@ -17,7 +17,7 @@ class Language
      * @param string $userLanguage
      * @return object
      */
-    final public function getLanguage(string $userLanguage = '')
+    final public function getLanguage(string $userLanguage = ''): object
     {
         return $this->setLanguage($userLanguage);
     }
@@ -29,10 +29,10 @@ class Language
      * @param string $userLanguage
      * @return object
      */
-    private function setLanguage(string $userLanguage = '')
+    private function setLanguage(string $userLanguage = ''): object
     {
         if($userLanguage === '') {
-            $language = Config::item('defaultLanguage', 'main');
+            $language = Config::item('defaultLanguage');
         } else {
             $language = $userLanguage;
         }

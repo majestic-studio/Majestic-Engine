@@ -29,7 +29,7 @@ class Redirect
      * @param string $url
      * @param false $permanent
      */
-    public static function go(string $url, $permanent = false)
+    public static function go(string $url, bool $permanent = false)
     {
         if ($permanent) {
             header('HTTP/1.1 301 Moved Permanently');

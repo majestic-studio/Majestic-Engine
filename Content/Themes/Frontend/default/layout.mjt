@@ -17,6 +17,5 @@
         {content}
         {footer}
         <script src="{THEME}/assets/js/app.js"></script>
-        <script src="{THEME}/test.js"></script>
     </body>
 </html>

@@ -15,13 +15,10 @@
 
 
 return [
-    'driver'        => 'mysql',
     'host'          => '127.0.0.1',
-    'database'      => 'majestic',
+    'db_name'      => 'majestic',
     'username'      => 'root',
     'password'      => 'root',
     'charset'       => 'utf8',
-    'collation'     => 'utf8_unicode_ci',
-    'prefix'        => '',
-    'strict'        => false
+    'driver'        => 'mysql'
 ];

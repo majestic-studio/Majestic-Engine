@@ -51,7 +51,6 @@ class Access
      */
     public function permit(string $permit = ''): array
     {
-
         switch ($permit) {
             case 'server':
                 $this->server();
@@ -63,7 +62,6 @@ class Access
                 $this->auth();
                 break;
         }
-
 
         return [
             'validation'    => $this->validation,
@@ -123,7 +121,7 @@ class Access
      *
      * TODO:: Создать доступ по ключу.
      */
-    private function key(): array
+    private function key(): void
     {
         $permit = 'server';
         Header::code403();

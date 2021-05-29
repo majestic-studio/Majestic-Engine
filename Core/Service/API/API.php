@@ -28,13 +28,14 @@ class API
 {
     /**
      * @param object $data
+     * @param $nuxt
      * @throws JsonException
      */
     public function data(object $data,  $nuxt): void
     {
         $module = new Router;
         $API = (array) $data->APIinstance->data;
-        $APIResult = (array) $data->APIinstance->data['result'][0];
+        $APIResult = (array) $data->APIinstance->data['result'];
         $access = new Access;
 
         $validation = $access->permit($module::module()->assets);
@@ -52,9 +53,6 @@ class API
        $time = microtime(true);
        $generation = round($time - TIME, 3);
 
-       if($validation === false) {
-           $API = null;
-       }
         if($API['result'] === null) {
             $API['result'] = [];
         }

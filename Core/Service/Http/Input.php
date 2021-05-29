@@ -54,11 +54,12 @@ class Input
         }
         return $key ? static::getParam($key, $input) : $input;
     }
+
     /**
-     * @param bool|mixed $key
+     * @param bool $key
      * @return mixed
      */
-    public static function files($key = false): mixed
+    public static function files(bool $key = false): mixed
     {
         return $key ? static::getParam($key, $_FILES) : $_FILES;
     }

@@ -1,12 +1,10 @@
 <template>
-  <div class="global-menu">
-    sad
-  </div>
+<p>Furniture</p>
 </template>
 
 <script>
 export default {
-  name: "GlobalNavMenu"
+  name: "Furniture"
 }
 </script>
 

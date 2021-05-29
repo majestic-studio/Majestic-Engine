@@ -37,9 +37,9 @@ class Header extends AbstractHeader
      * этого необходимо проводить проверку, пустое
      * ли поле заголовка страницы
      *
-     * @param mixed $header - заголовок страницы
+     * @param string $header - заголовок страницы
      */
-    public function header ($header = ''): void
+    public function header (string $header = ''): void
     {
         if(array_key_exists($header, $this->type) === false) {
             $header = 'html';

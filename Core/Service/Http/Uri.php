@@ -68,7 +68,7 @@ class Uri
 
             # Создаем сегменты URI.
             $length     = strlen($base);
-            $str        = (string) substr($uri, $length);
+            $str        = substr($uri, $length);
             $arr        = (array) explode('/', trim($str, '/'));
             $segments   = [];
 
@@ -160,6 +160,6 @@ class Uri
      */
     public static function segmentString(): string
 	{
-        return (string) implode('/', static::$segments);
+        return implode('/', static::$segments);
     }
 }

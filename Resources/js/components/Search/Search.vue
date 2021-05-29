@@ -9,7 +9,7 @@
   </suspense>
 </template>
 
-<script setup>
+<script>
 import SearchComponent from "./SearchComponent";
 import SearchComponentSkeleton from "./SearchComponentSkeleton";
 
