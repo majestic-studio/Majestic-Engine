@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @mouseover="loadingDataMenu">
     <ul class="list">
       <li v-for="tab in tabs"
           :key="tab"
@@ -13,12 +13,14 @@
 
       </li>
     </ul>
-
-    <div class="content">
-      <div class="menu">
-        <component :is="currentTabComponent" class="tab"></component>
+      <div class="content">
+        <div class="menu">
+          <transition name="component-fade" mode="out-in">
+            <component :is="currentTabComponent" class="tab"></component>
+          </transition>
+        </div>
       </div>
-    </div>
+
   </div>
 </template>
 
@@ -69,22 +71,38 @@ export default {
     'Furniture': Furniture,
     'Promo': Promo,
   },
-  method() {
+  methods: {
+    loadingDataMenu() {
+      if(this.loadingMenu === false) {
+        const APIRequest = '/api/v1/system/menu/';
 
+        axios
+            .get(APIRequest)
+            .then(response => {
+              this.tabs = response.data.result
+            })
+
+        return this.loadingMenu = true
+      }
+
+    }
   },
   mounted() {
-    const APIRequest = '/api/v1/system/menu/';
-
-    axios
-        .get(APIRequest)
-        .then(response => {
-          this.tabs = response.data.result
-        })
+    // Проверка, загружено ли API главного меню.
+    // Если false, то выполняем функцию loadingDataMenu()
+    this.loadingMenu = false
   }
+
 }
 
 </script>
 
 <style scoped>
-
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+  /* .component-fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
 </style>

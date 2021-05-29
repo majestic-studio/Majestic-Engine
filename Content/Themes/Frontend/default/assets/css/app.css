@@ -734,17 +734,21 @@ header .promo-header .content::before {
   z-index: 1;
 }
 
-header .promo-header .content ul {
+header .promo-header .content .region {
+  width: 100%;
+}
+
+header .promo-header .content .region ul {
   flex-grow: 1;
   padding: 12px 0;
 }
 
-header .promo-header .content ul li {
+header .promo-header .content .region ul li {
   margin-right: 14px;
   white-space: nowrap;
 }
 
-header .promo-header .content ul li a {
+header .promo-header .content .region ul li a {
   display: inline-block;
   padding: 0;
   border: 0;
@@ -757,11 +761,11 @@ header .promo-header .content ul li a {
   color: #a1a1a1;
 }
 
-header .promo-header .content ul li a:hover {
+header .promo-header .content .region ul li a:hover {
   color: #e31717;
 }
 
-header .promo-header .content ul li a i::before {
+header .promo-header .content .region ul li a i::before {
   font-style: normal;
   font-family: "Font Awesome 6 Pro", sans-serif;
   font-weight: 900;
@@ -771,10 +775,7 @@ header .promo-header .content ul li a i::before {
 header .promo-header .services {
   display: flex;
   max-height: 44px;
-}
-
-header .promo-header .services .dfr > a {
-  margin: auto;
+  padding: 12px 0;
 }
 
 .header {
