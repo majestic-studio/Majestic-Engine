@@ -97,21 +97,6 @@ final class Auth
     }
 
     /**
-     * Авторизировать пользователя.
-     *
-     * @param object $user - пользователь для авторизации.
-     * @return void
-     */
-    public static function authorizeUser(object $user): void
-    {
-        Session::put('auth.authorizedUser', true);
-        Session::put('auth.userUser', $user);
-
-        Auth::$authorized = true;
-        Auth::$user       = $user;
-    }
-
-    /**
      * Несанкционированный текущий пользователь.
      *
      * @return void
@@ -120,21 +105,6 @@ final class Auth
     {
         Session::forget('auth.authorized');
         Session::forget('auth.user');
-
-        Auth::$authorized = false;
-        Auth::$user       = null;
-    }
-
-    /**
-     * Неавторизированный пользователь
-     *
-     * @return void
-     */
-    public static function unAuthorizeUser(): void
-    {
-        Session::forget('auth.authorizedUser');
-        Session::forget('auth.userUser');
-        session_destroy();
 
         Auth::$authorized = false;
         Auth::$user       = null;

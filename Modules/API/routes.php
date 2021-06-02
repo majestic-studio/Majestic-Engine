@@ -30,3 +30,10 @@ if (Uri::segment(1) === 'api' ) {
         'action' => 'getSection',
         'assets' => 'international',
     ]);
+
+        # Проверка вводимых данных пользователя POST
+    APIRoute::api('post', '/api/account/verification', [
+        'controller' => 'AccountAPI',
+        'action' => 'userVerification',
+        'assets' => 'international',
+    ]);

@@ -19,6 +19,7 @@ namespace Core\Service\Routing;
 
 use Core\Core;
 use Core\Service\API\API;
+use Core\Service\Http\Header;
 use Core\Service\Http\Request;
 use Core\Service\Http\Uri;
 use Core\Service\Path\Path;
@@ -67,7 +68,7 @@ class Router
 
         # Если роутер не был передан.
         if (empty($route)) {
-            die('HTTP ERROR 500');
+            Header::code(500);
         }
 
 		# Создание модуля.

@@ -16,5 +16,7 @@ document.querySelector('#drop-account').addEventListener('click', function (){
 
 window.onscroll = function () {
     document.querySelector('.account-case').classList.remove('block')
-
 }
+
+
+

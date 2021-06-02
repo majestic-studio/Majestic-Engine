@@ -31,13 +31,12 @@ $tpl->set('{keywords}', $data['keywords']);
  */
 $auth = new Auth();
 
-if( $auth::authorized() === true ) {
-    $tpl->set('{profile_url}', $data['user_url']);
+if( $auth::authorized() == true ) {
     $tpl->set_block( "'\\[guest\\](.+?)\\[/guest\\]'si", "" );
     $tpl->set( '[user]', '' );
     $tpl->set( '[/user]', '' );
 
-} elseif ( $auth::authorized() === false) {
+} elseif ($auth::authorized() == false) {
     $tpl->set_block ( "'\\[user\\](.*?)\\[/user\\]'si", "" );
     $tpl->set("[guest]", "");
     $tpl->set("[/guest]", "");

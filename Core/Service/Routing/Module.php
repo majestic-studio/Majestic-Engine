@@ -88,7 +88,13 @@ class Module
     public function __construct(array $config = [])
     {
         $header = new Header();
-
+        if($config === []) {
+            $config = [
+                "controller" => "ErrorController",
+                "action" => "page500",
+                "module" => "Error"
+            ];
+        }
         foreach ($config as $key => $value) {
             $this->$key = $value;
         }
@@ -134,6 +140,9 @@ class Module
          */
         $class = '\\Modules\\' . $this->module . '\Controller\\' . $this->controller;
 
+        if($this->module === '') {
+            $this->module = 'Frontend';
+        }
         /**
          * Проверка на существование класса.
          */

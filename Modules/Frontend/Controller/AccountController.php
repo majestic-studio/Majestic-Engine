@@ -23,6 +23,11 @@ class AccountController extends FrontendController
 
     }
 
+    public function registerPOST()
+    {
+
+    }
+
     public function login()
     {
 

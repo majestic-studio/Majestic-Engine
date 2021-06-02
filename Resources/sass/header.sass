@@ -236,6 +236,8 @@ header
             margin-left: 5px
             @media(max-width: 500px)
               display: none
+  #search
+    width: 100%
     .search
       width: 100%
       form
@@ -417,7 +419,7 @@ header
       overflow: hidden
       position: relative
       border: solid 1px #f5f5f5
-      padding: 20px 24px
+      padding: 15px
       border-radius: 5px
       background-color: #fff
     &:before
@@ -459,12 +461,69 @@ header
             top: 5px
             font-size: 17px
             left: 13px
+        .icons-user-password
+          background: #e8e8e8
+          position: absolute
+          top: 0
+          right: 0
+          width: 40px
+          height: 33px
+          border-radius: 0 4px 4px 0
+          &:before
+            font-family: "Font Awesome 6 Pro", sans-serif
+            content: '\f30d'
+            position: absolute
+            top: 5px
+            font-size: 17px
+            left: 13px
         input
           width: 100%
           height: 100%
           border: solid 1px #eee
           padding: 16px 40px 16px 10px
           border-radius: 4px
+    .forge-password
+      font-size: 11px
+      text-align: right
+      color: #688093
+      text-decoration: underline
+      cursor: pointer
+      line-height: normal
+      margin-bottom: 10px
+    .button-auth
+      button.submit
+        width: 115px
+        margin-right: 0
+        height: 40px
+        border-radius: 4px
+        background-color: #ff5000
+        border: none
+        padding: 0
+        font-size: 12px
+        line-height: 1.25
+        text-align: center
+        color: #fff
+        outline: none
+        cursor: pointer
+        transition: all .2s ease-in-out
+        &:focus
+          outline: 5px auto -webkit-focus-ring-color
+        &:hover
+          opacity: .7
+      button.registration-link
+        font-size: 12px
+        width: 115px
+        line-height: 1.25
+        text-align: center
+        color: #0a3251
+        background: none
+        border: none
+        padding: 10px
+        cursor: pointer
+        outline: none
+        transition: all .2s ease-in-out
+        &:hover
+          color: #ff5000
   .promotions
     width: 55px
     margin: 0 13px

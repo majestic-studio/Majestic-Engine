@@ -79,7 +79,7 @@
                                 </div>
                             </a>
                         </div>
-
+                        [guest]
                         <div class="account_menu">
                             <div class="login_btn">
                                 <span id="drop-account">
@@ -89,7 +89,7 @@
 
                             <div class="account-case">
                                 <div class="case-content">
-                                    <form method="post" action="/account/auth">
+                                    <form method="post" action="/api/account/verification">
                                         <h4>
                                             Добро пожаловать!
                                         </h4>
@@ -99,11 +99,22 @@
                                         </div>
                                         <div class="input-login">
                                             <input type="password" id="password" placeholder="Password">
+                                            <div class="icons-user-password"></div>
+                                        </div>
+                                        <div class="forge-password">
+                                            <a href="/account/forge">
+                                                Забыли пароль?
+                                            </a>
+                                        </div>
+                                        <div class="button-auth">
+                                            <button type="button" class="submit" id="send-account">Вход</button>
+                                            <button class="registration-link">Регистрация</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
+                        [/guest]
                     </div>
                 </div>
 
