@@ -31,17 +31,4 @@ class ErrorController extends FrontendController
 
         return View::make('404', $this->data);
     }
-
-    /**
-     * Страница 404
-     * @return View
-     */
-    public function page500(): View
-    {
-        $this->layout = 'error500';
-        Header::code(500);
-        # Данные массива $data
-
-        return View::make('500', $this->data);
-    }
 }

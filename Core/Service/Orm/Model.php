@@ -19,6 +19,7 @@ namespace Core\Service\Orm;
 
 use Core\Service\Database\Database;
 use Exception;
+use JetBrains\PhpStorm\Pure;
 
 
 /**
@@ -54,7 +55,7 @@ class Model extends AbstractModel
      * @param  string  $attribute - имя получаемого аттрибута.
      * @return mixed
      */
-    public function getAttribute(string $attribute)
+    public function getAttribute(string $attribute): mixed
     {
         return $this->attributes[$attribute] ?? false;
     }
@@ -66,7 +67,7 @@ class Model extends AbstractModel
      * @param  mixed   $value
      * @return void
      */
-    public function setAttribute(string $attribute, $value): void
+    public function setAttribute(string $attribute, mixed $value): void
     {
         $this->attributes[$attribute] = $value;
     }
@@ -152,7 +153,7 @@ class Model extends AbstractModel
      * @param  mixed  $value - значение для проверки по столбцу.
      * @return Query
      */
-    public static function where(string $column,  string $operator, $value): Query
+    public static function where(string $column, string $operator, mixed $value): Query
     {
         if ($operator === '') {
             $group = $operator;
@@ -169,7 +170,7 @@ class Model extends AbstractModel
      *
      * @return Query
      */
-    public static function query(): Query
+    #[Pure] public static function query(): Query
     {
         return new Query(static::$table, static::class);
     }

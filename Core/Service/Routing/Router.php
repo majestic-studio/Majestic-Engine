@@ -96,7 +96,7 @@ class Router
         # Если есть макет для обработки, то подключаем его
         if($moduleType['type'] === 'API') {
             $data = $module;
-            $nuxt = $module->APIinstance->nuxt;
+            $nuxt = $module->APIInstance->nuxt;
             if ($data != '') {
                 $api = new API;
                 $api->data($data, $nuxt);

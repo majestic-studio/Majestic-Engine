@@ -46,7 +46,6 @@ require_once ROOT_DIR . '/Core/Helpers/Language.php';
  * TODO:: Создать функционал запиши ошибки в log-файл системы
  **/
 try {
-    #dd(\Core\Service\Auth\Auth::authorized());
     Router::initialize();
 } catch (Exception $e) {
     dd($e);

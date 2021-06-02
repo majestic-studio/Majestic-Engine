@@ -18,7 +18,6 @@ namespace Core\Service\Files;
 
 
 use Core\Service\Config\Config;
-use Core\Service\Settings\Setting;
 use Exception;
 
 
@@ -30,13 +29,6 @@ use Exception;
  */
 class FileInfo implements FileInterface
 {
-    /**
-     * Сепаратор
-     *
-     * @var string $sep   = /
-     */
-    protected string $sep = '/';
-
     /**
      * Результат запроса details функции details
      *
@@ -60,39 +52,21 @@ class FileInfo implements FileInterface
      * Получение инфорации о файле в виде массива с содержанием "полный путь", "имя файла", "размер файла"
      * с вычислением на байта, мегабайты и так далее.
      *
-     *
      * @param string $file
-     * @param string $sub_folder
-     * @param string $theme
-     * @param string $folder
-     * @param string $section
      * @return string|array
      * @throws Exception
      */
-    public function details(string $file, string $sub_folder, string $theme = '', string $folder = '', string $section = ''): array|string
+    public function details(string $file): array|string
     {
         $file_info = new self();
-        if ($section === '') {
-            $section = $_SERVER['DOCUMENT_ROOT'] . $this->sep . 'Library';
-        } else {
-            $section = $_SERVER['DOCUMENT_ROOT'] . $section;
-        }
 
-        if ($theme === '') {
-            $theme = Setting::item('active_theme', 'theme')->value;
-        }
+        $object =  $file;
 
-        if ($folder === '') {
-            $folder = $this->sep . 'Themes';
-        }
-
-        $object = $folder . $this->sep . $theme . $this->sep . $sub_folder . $this->sep . $file;
-
-        $this->details['src'] = Config::item('host') . $this->sep . 'Library' . $folder . $this->sep . $theme . $this->sep . $sub_folder . $this->sep . $file;
-        $this->details['FTP'] = $_SERVER['DOCUMENT_ROOT'] . $this->sep . 'Library' . $folder . $this->sep . $theme . $this->sep . $sub_folder . $this->sep . $file;
+        $this->details['src'] = Config::item('host') . $file;
+        $this->details['FTP'] = $_SERVER['DOCUMENT_ROOT'] . $file;
         $this->details['file'] = $file;
         $this->details['type'] = filetype ($this->details['FTP']);
-        $this->details['size'] = $file_info->getFileSize($section . $object);
+        $this->details['size'] = $file_info->getFileSize($object);
         $this->details['last_edit'] = date("F d Y H:i:s.", fileatime($this->details['FTP']));
 
 

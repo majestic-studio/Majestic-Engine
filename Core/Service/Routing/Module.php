@@ -37,12 +37,12 @@ class Module
     /**
      * @var APIController - контроллер.
      */
-    public APIController $APIinstance;
+    public APIController $APIInstance;
 
     /**
      * @var mixed - ответ действий.
      */
-    protected $response;
+    protected mixed $response;
 
     /**
      * @var string - активный модуль.
@@ -68,12 +68,6 @@ class Module
      * @var string - тема.
      */
     public string $theme = '';
-
-
-    /**
-     * @var string
-     */
-    public string $viewPath = '';
 
     /**
      * @var string|null - права доступа к разделу
@@ -154,8 +148,8 @@ class Module
 
         if (class_exists($class)) {
             if($moduleType['type'] === 'API') {
-                $this->APIinstance = new $class;
-                $this->response = call_user_func_array([$this->APIinstance, $this->action], $this->parameters);
+                $this->APIInstance = new $class;
+                $this->response = call_user_func_array([$this->APIInstance, $this->action], $this->parameters);
             } elseif($moduleType['type'] === 'module') {
                 $this->instance = new $class;
                 $this->response = call_user_func_array([$this->instance, $this->action], $this->parameters);

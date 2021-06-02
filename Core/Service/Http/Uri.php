@@ -18,6 +18,7 @@ namespace Core\Service\Http;
 
 
 use Core\Define;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * Класс для работы с URL
@@ -129,7 +130,7 @@ class Uri
      * @param string $uri
      * @return string
      */
-    protected function url(string $uri = ''): string
+    #[Pure] protected function url(string $uri = ''): string
 	{
         return static::base() . ltrim($uri, '/');
     }

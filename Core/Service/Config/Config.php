@@ -34,10 +34,10 @@ final class Config
      *
      * @param string $key
      * @param string $group
-     * @return false|mixed
+     * @return mixed
      * @throws RuntimeException
      */
-    public static function item(string $key, string $group = 'main')
+    public static function item(string $key, string $group = 'main'): mixed
     {
         if (!Repository::retrieve($group, $key)) {
             self::file($group);
@@ -50,10 +50,10 @@ final class Config
      * Извлечение элементов конфигурации группы (файла)
      *
      * @param string $group
-     * @return false|mixed
+     * @return mixed
      * @throws RuntimeException
      */
-    public static function group(string $group)
+    public static function group(string $group): mixed
     {
         if (!Repository::retrieveGroup($group)) {
             self::file($group);
@@ -66,10 +66,10 @@ final class Config
      * Получение файла для его анализа в item() и group()
      *
      * @param string $group
-     * @return bool
+     * @return void
      * @throws RuntimeException
      */
-    private static function file(string $group = 'main'): bool
+    private static function file(string $group = 'main'): void
     {
         $path = ROOT_DIR . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . $group . '.php';
 
@@ -96,7 +96,7 @@ final class Config
                 /**
                  * Возвращаем конечный результат
                  */
-                return true;
+                return;
             }
 
             throw new RuntimeException(

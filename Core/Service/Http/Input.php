@@ -17,6 +17,7 @@
 namespace Core\Service\Http;
 
 
+use JetBrains\PhpStorm\Pure;
 use JsonException;
 
 /**
@@ -29,7 +30,7 @@ class Input
      * @param bool
      * @return array
      */
-    public static function get(bool $key = false): array
+    #[Pure] public static function get(bool $key = false): array
     {
         return $key ? static::getParam($key, $_GET) : $_GET;
     }
@@ -40,7 +41,7 @@ class Input
      * @param bool $key
      * @return array
      */
-    public static function post(bool $key = false): array
+    #[Pure] public static function post(bool $key = false): array
     {
         return $key ? static::getParam($key, $_POST) : $_POST;
     }
@@ -59,7 +60,7 @@ class Input
      * @param bool $key
      * @return mixed
      */
-    public static function files(bool $key = false): mixed
+    #[Pure] public static function files(bool $key = false): mixed
     {
         return $key ? static::getParam($key, $_FILES) : $_FILES;
     }

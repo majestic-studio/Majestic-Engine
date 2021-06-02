@@ -7,16 +7,29 @@ namespace Core\Service\Client;
 use Core\Service\Localization\Language;
 use DI;
 
+
 class Client
 {
 
-    public static function language()
+    /**
+     * Получение и подключение языка пользователя.
+     * Функция Language::getLanguage(:string) вместо :string принимает значение языка
+     * пользователя. Если параметр отсутствует, то получаем язык, который установлен в
+     * конфигурации системы по умолчанию.
+     *
+     * @return string
+     */
+    public static function language(): string
     {
-        $lang = new Language();
-        $lang->getLanguage();
+        Language::getLanguage();
+
         return DI::instance()->get('lang');
     }
+
     /**
+     * Получение реального IP адреса пользователя для дальнейших
+     * манипуляций над ним.
+     *
      * @return string|null
      */
    public static function getIP(): ?string
@@ -28,6 +41,7 @@ class Client
            'HTTP_X_FORWARDED_FOR',
            'REMOTE_ADDR'
        ];
+
        foreach ($keys as $key) {
            if (!empty($_SERVER[$key])) {
                $array = explode(',', $_SERVER[$key]);

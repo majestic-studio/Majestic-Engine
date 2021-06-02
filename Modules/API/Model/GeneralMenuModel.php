@@ -5,6 +5,7 @@ namespace Modules\API\Model;
 
 
 use Core\Service\Orm\Model;
+use Exception;
 use Query;
 
 class GeneralMenuModel extends Model
@@ -12,7 +13,7 @@ class GeneralMenuModel extends Model
     protected static string $table = 'menu_section';
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function getSectionMenu()
     {

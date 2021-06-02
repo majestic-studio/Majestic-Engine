@@ -57,7 +57,7 @@ class Native extends SessionDriver implements SessionInterface
 	 *
 	 * @return SessionDriver
 	 */
-    public function put(string $name, $data): SessionDriver
+    public function put(string $name, mixed $data): SessionDriver
 	{
 		# Вставить данные сеанса.
         $_SESSION[$this->key][$name] = $data;
@@ -68,10 +68,10 @@ class Native extends SessionDriver implements SessionInterface
 
 	/**
 	 * @param string $name
-	 * @return bool|mixed
+	 * @return mixed
 	 */
-    public function get(string $name)
-	{
+    public function get(string $name): mixed
+    {
         return $_SESSION[$this->key][$name] ?? false;
     }
 
@@ -116,11 +116,11 @@ class Native extends SessionDriver implements SessionInterface
 
 	/**
 	 * @param string $name
-	 * @param null $data
-	 * @return bool|mixed|null
+	 * @param array|null $data
+	 * @return mixed
 	 */
-    public function flash(string $name, $data = null)
-	{
+    public function flash(string $name, array $data = null): mixed
+    {
         # Если данные нулевые, вернуть то, что сохранено
         if ($data === null)
             return $_SESSION['flash'][$name] ?? false;
@@ -150,8 +150,8 @@ class Native extends SessionDriver implements SessionInterface
 	/**
 	 * @return array
 	 */
-    public function kept()
-	{
+    public function kept(): array
+    {
         return $this->keep;
     }
 

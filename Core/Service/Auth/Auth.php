@@ -19,56 +19,45 @@ namespace Core\Service\Auth;
 use Core;
 use Core\Service\Session\Facades\Session;
 
-
-
 /**
  * Класс для работы с аунтефикацией и авторизации пользователя
  *
  * Class Auth
  * @package Core\App\Auth
  */
-final class Auth
+class Auth
 {
-
     /**
-     * Пользователь аутентифицирован?
-     *
-     * @var bool
+     * @var bool Пользователь аутентифицирован?
      */
     protected static bool $authorized = false;
 
     /**
-     * Аутентифицированный пользователь.
-     *
-     * @var object|null
+     * @var object Авторизованный пользователь.
      */
-    protected static ?object $user;
+    protected static object $user;
 
     /**
-     * Инициализация авторизации
+     * Создайте экземпляр класса аутентификации.
      *
      * @return void
      */
     public static function initialize(): void
     {
-        /**
-         * Проверяем, авторизирован ли пользователь
-         * если нет, то ничего не выполняем.
-         */
         if (Session::has('auth.user') && Session::has('auth.authorized')) {
-            self::$authorized = Session::get('auth.authorized');
-            self::$user       = Session::get('auth.user');
+            static::$authorized = Session::get('auth.authorized');
+            static::$user       = Session::get('auth.user');
         }
     }
 
     /**
-     * Пользователь авторизован?
+     * Проверка, авторизирован ли пользователь.
      *
      * @return bool
      */
-    public static function authorized() : bool
+    public static function authorized(): bool
     {
-        return Auth::$authorized;
+        return static::$authorized;
     }
 
     /**
@@ -78,13 +67,14 @@ final class Auth
      */
     public static function user(): object
     {
-        return Auth::$user;
+        return static::$user;
     }
 
     /**
-     * Пользователь для авторизации.
+     * Авторизация пользователя.
+     * Принимает в себя данные пользователя в виде объекта.
      *
-     * @param object $user
+     * @param  object $user - пользователь для авторизации.
      * @return void
      */
     public static function authorize(object $user): void
@@ -92,21 +82,21 @@ final class Auth
         Session::put('auth.authorized', true);
         Session::put('auth.user', $user);
 
-        Auth::$authorized = true;
-        Auth::$user       = $user;
+        static::$authorized = true;
+        static::$user       = $user;
     }
 
     /**
-     * Несанкционированный текущий пользователь.
+     * Удаление данных текущего пользователя.
      *
      * @return void
      */
-    public static function unauthorized(): void
+    public static function UnAuthorizes(): void
     {
         Session::forget('auth.authorized');
         Session::forget('auth.user');
 
-        Auth::$authorized = false;
-        Auth::$user       = null;
+        static::$authorized = false;
+        static::$user       = (object) null;
     }
 }

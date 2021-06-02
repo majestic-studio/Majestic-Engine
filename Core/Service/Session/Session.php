@@ -13,12 +13,12 @@ class Session
     /**
      * @var bool - сессия инициализирована.
      */
-    protected static $initialized = false;
+    protected static bool $initialized = false;
 
     /**
      * @var SessionDriver - активный драйвер сеанса.
      */
-    protected static $driver;
+    protected static SessionDriver $driver;
 
     /**
      * Создать новую сессию.
@@ -59,8 +59,8 @@ class Session
      *
      * @return SessionDriver|SessionInterface
      */
-    public static function driver()
-	{
+    public static function driver(): SessionInterface|SessionDriver
+    {
         return static::$driver;
     }
 

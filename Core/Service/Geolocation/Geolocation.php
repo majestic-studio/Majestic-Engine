@@ -52,7 +52,7 @@ class Geolocation
      * @param string $db_file
      * @param int $type
      */
-    public function __construct($db_file = 'Core/Service/Geolocation/data/GeoCity.dat', $type = SXGEO_FILE)
+    public function __construct(string $db_file = 'Core/Service/Geolocation/data/GeoCity.dat', int $type = SXGEO_FILE)
     {
 
         $this->fh = fopen($db_file, 'rb');

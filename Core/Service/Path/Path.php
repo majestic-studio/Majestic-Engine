@@ -17,6 +17,8 @@
 namespace Core\Service\Path;
 
 
+use JetBrains\PhpStorm\Pure;
+
 /**
  * Класс для работы с путями, умеет выводить как абсолютные
  * пути к различным папкам и пакетам, так и URL пути.
@@ -63,7 +65,6 @@ class Path
             'config' => $uri . '/Config',
             'modules' => $uri . '/Modules',
             'content' => $uri . '/Content',
-            'library' => $uri . '/Library',
             default => $uri . '/',
         };
     }
@@ -76,7 +77,7 @@ class Path
      * @param bool $absolute
      * @return string
      */
-    final public function getPath(string $section = '', bool $absolute = true): string
+    #[Pure] final public function getPath(string $section = '', bool $absolute = true): string
     {
        return $this->path($section, $absolute);
     }
@@ -92,7 +93,7 @@ class Path
      *                              URL путь
      * @return string
      */
-    final public function Content(string $section, bool $absolute = true): string
+    #[Pure] final public function Content(string $section, bool $absolute = true): string
     {
         /**
          * Путь к секции Content для вывода под папок
@@ -108,7 +109,6 @@ class Path
             'frontend' => $path . '/Themes/Frontend',
             'backend' => $path . '/Themes/Backend',
             'plugins' => $path . '/Plugins',
-            'vue' => $path . '/Resources',
             default => $path,
         };
     }
@@ -124,7 +124,7 @@ class Path
      *                              URL путь
      * @return string
      */
-    final public function Module(string $section = '', bool $absolute = true): string
+    #[Pure] final public function Module(string $section = '', bool $absolute = true): string
     {
         /**
          * Путь к секции Modules для вывода под папок
@@ -138,24 +138,6 @@ class Path
         return match (strtolower($section)) {
             'frontend' => $path . '/Frontend',
             'backend' => $path . '/Backend',
-            default => $path,
-        };
-    }
-
-    final public function Library(string $section = '', bool $absolute = true): string
-    {
-        /**
-         * Путь к секции Library для вывода под папок
-         * @var $absolute - название под секции раздела Modules
-         */
-        $path = $this->getPath('library', $absolute);
-
-        /**
-         * Кейсы раздела Modules, в случаи пустого кейса выводим корень Modules
-         */
-        return match (strtolower($section)) {
-            'vendor' => $path . '/Vendor',
-            'theme' => $path . '/Themes',
             default => $path,
         };
     }

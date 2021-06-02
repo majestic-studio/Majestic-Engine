@@ -21,6 +21,7 @@ use Core\Service\Http\Header;
 use Core\Service\Http\Request;
 use Core\Service\Http\Uri;
 use Core\Service\Routing\Router;
+use JetBrains\PhpStorm\NoReturn;
 use JsonException;
 
 
@@ -28,14 +29,14 @@ class API
 {
     /**
      * @param object $data
-     * @param $nuxt
+     * @param mixed $nuxt
      * @throws JsonException
      */
-    public function data(object $data,  $nuxt): void
+    #[NoReturn] public function data(object $data, mixed $nuxt): void
     {
         $module = new Router;
-        $API = (array) $data->APIinstance->data;
-        $APIResult = (array) $data->APIinstance->data['result'];
+        $API = $data->APIInstance->data;
+        $APIResult = $data->APIInstance->data['result'];
         $access = new Access;
 
         $validation = $access->permit($module::module()->assets);

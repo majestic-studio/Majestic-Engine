@@ -47,7 +47,7 @@ class Session
 	 *
 	 * @return SessionDriver
 	 */
-    public static function put(string $name, $data): SessionDriver
+    public static function put(string $name, mixed $data): SessionDriver
 	{
         return static::make()->driver()->put($name, $data);
     }
@@ -58,8 +58,8 @@ class Session
      * @param  string  $name - название сессии.
      * @return mixed
      */
-    public static function get(string $name)
-	{
+    public static function get(string $name): mixed
+    {
         return static::make()->driver()->get($name);
     }
 
@@ -110,11 +110,11 @@ class Session
 	 * он попытается найти сохраненные данные.
      *
      * @param  string  $name - название флэш данных.
-     * @param  mixed   $data - значение элемента сессии.
+     * @param mixed $data - значение элемента сессии.
      * @return mixed
      */
-    public function flash(string $name, $data = null)
-	{
+    public function flash(string $name, mixed $data = null): mixed
+    {
         return static::make()->driver()->flash($name, $data);
     }
 
@@ -144,8 +144,8 @@ class Session
 	 * Создает новый экземпляр класса сеанса.
 	 * @return Factory|SessionDriver
 	 */
-    public static function make()
-	{
+    public static function make(): Factory|SessionDriver
+    {
         return static::$session ?? new Factory;
     }
 

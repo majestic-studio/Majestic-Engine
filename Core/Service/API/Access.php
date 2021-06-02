@@ -7,7 +7,7 @@
  *-----------------------------------------------------
  * @copyright: 2020 Majestic Studio and ZerxaFun      -
  *=====================================================
- *                                                    =
+ * Уровни доступа к API системы                       =
  *                                                    =
  *                                                    =
  *=====================================================
@@ -19,6 +19,7 @@ namespace Core\Service\API;
 
 use Core\Service\Auth\Auth;
 use Core\Service\Http\Header;
+use JetBrains\PhpStorm\ArrayShape;
 
 
 /**
@@ -46,21 +47,28 @@ class Access
      * auth     -   Доступно лишь для авторизированных пользователей
      * key      -   Доступно лишь по ключу
      * server   -   Внутренние запросы, доступны лишь для обращения от текущего сервера к текущему серверу
+     *
      * @param string $permit
      * @return array
      */
+    #[
+        ArrayShape(
+            [
+                'validation' => "bool",
+                'error' => "array"
+            ]
+        )
+    ]
     public function permit(string $permit = ''): array
     {
         switch ($permit) {
             case 'server':
                 $this->server();
                 break;
-            case 'key':
-                $this->key();
-                break;
             case 'auth':
                 $this->auth();
                 break;
+            default: break;
         }
 
         return [
@@ -74,8 +82,10 @@ class Access
      */
     private function auth(): void
     {
+        # Тип доступа
         $permit = 'auth';
 
+        # Параметры доступа
         if(!Auth::authorized()) {
             $this->validation = false;
             Header::code403();
@@ -89,7 +99,6 @@ class Access
             $this->validation = true;
             $this->error = [];
         }
-
     }
 
     /**
@@ -97,7 +106,10 @@ class Access
      */
     private function server(): void
     {
+        # Тип доступа
         $permit = 'server';
+
+        # Параметры доступа
         $client = $_SERVER['REMOTE_ADDR'];
         $server = $_SERVER['SERVER_ADDR'];
 
@@ -115,23 +127,4 @@ class Access
             $this->error = [];
         }
     }
-
-    /**
-     * API по ключу
-     *
-     * TODO:: Создать доступ по ключу.
-     */
-    private function key(): void
-    {
-        $permit = 'server';
-        Header::code403();
-        $this->validation = false;
-
-        $this->error = [
-            'access-method'     => $permit,
-            'error'             => 'Not API access',
-            'message'           => 'Ищу фрилансера, работа за идею.'
-        ];
-    }
-
 }

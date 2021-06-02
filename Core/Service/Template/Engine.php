@@ -18,6 +18,7 @@ namespace Core\Service\Template;
 
 
 use Core\Service\Routing\Router;
+use JetBrains\PhpStorm\Pure;
 
 
 /**
@@ -29,7 +30,7 @@ class Engine
     /**
      * @return string
      */
-    public function ViewDirectory(): string
+    #[Pure] public function ViewDirectory(): string
     {
         $module = Router::module();
         return sprintf('/Modules/%s/View/', $module->module);

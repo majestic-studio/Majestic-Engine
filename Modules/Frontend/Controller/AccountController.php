@@ -17,24 +17,4 @@ class AccountController extends FrontendController
     {
 
     }
-
-    public function register()
-    {
-
-    }
-
-    public function registerPOST()
-    {
-
-    }
-
-    public function login()
-    {
-
-    }
-
-    public function exit()
-    {
-
-    }
 }

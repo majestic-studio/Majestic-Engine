@@ -63,13 +63,6 @@ class Query
     protected array $update = [];
 
     /**
-     * Запрос на DELETE приложения.
-     *
-     * @var  array
-     */
-    protected array $delete = [];
-
-    /**
      * Запрос на SELECT приложения.
      *
      * @var  array
@@ -102,7 +95,7 @@ class Query
      *
      * @var  mixed
      */
-    protected $result;
+    protected mixed $result;
 
     /**
      * Запрос на LIMIT.
@@ -153,7 +146,7 @@ class Query
      * Возвращает количество элементов базы данных определенного
      * раздела
      *
-     * @param $array
+     * @param array $array
      * @return int
      */
     public static function countQuery(array $array): int
@@ -203,7 +196,7 @@ class Query
      * @param mixed $value
      * @return $this
      */
-    public function where(string $column, string $operator, $value): Query
+    public function where(string $column, string $operator, mixed $value): Query
     {
         if (!$operator) {
             $operator = '=';
@@ -363,7 +356,7 @@ class Query
             $this->insert($attributes);
         }
 
-        return $this->run('create') ? true : false;
+        return (bool)$this->run('create');
     }
 
     /**
@@ -379,7 +372,7 @@ class Query
             $this->update($attributes);
         }
 
-        return $this->run('update') ? true : false;
+        return (bool)$this->run('update');
     }
 
     /**
@@ -427,11 +420,10 @@ class Query
     /**
      * Получение всех элементов в json
      *
-     * @param bool $json
      * @return mixed
      * @throws Exception
      */
-    public function allJson(bool $json = false)
+    public function allJson(): mixed
     {
         /**
          * Метод выполнения запроса
@@ -441,9 +433,7 @@ class Query
         /**
          * Получение результата
          */
-        $fetched = $this->stmt->all();
-
-        return $fetched;
+        return $this->stmt->all();
     }
 
     /**
@@ -452,12 +442,12 @@ class Query
      * @return bool|object
      * @throws Exception
      */
-    public function first()
+    public function first(): object|bool
     {
         /**
          * Тип запроса
          */
-        $this->run('read');
+        $this->run();
 
         /**
          * Результат запроса

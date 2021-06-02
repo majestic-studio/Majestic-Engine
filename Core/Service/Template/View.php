@@ -74,7 +74,7 @@ class View
         return $this->data;
     }
 
-	public static function theme(): string
+	#[Pure] public static function theme(): string
 	{
 		return static::engine()->ViewDirectory();
 	}

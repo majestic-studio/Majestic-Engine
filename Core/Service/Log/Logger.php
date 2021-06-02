@@ -18,6 +18,7 @@ namespace Core\Service\Log;
 
 
 use Core\Service\Files\FileInfo;
+use JetBrains\PhpStorm\ArrayShape;
 
 
 /**
@@ -60,10 +61,10 @@ class Logger
 	 * @param array $file
 	 * @param string $message
 	 * @param string $user_name
-	 * @return array|mixed
-	 */
-	private function getMessage(array $file, string $message, string $user_name)
-	{
+	 * @return void
+     */
+	private function getMessage(array $file, string $message, string $user_name): void
+    {
 		$file	= $file['file_info']['uri'];
 		$get_file 	= file_get_contents($file);
 
@@ -90,8 +91,7 @@ class Logger
 		fwrite($file_open,  "\n----------------------------------------");
 		fclose($file_open);
 
-		return $file;
-	}
+    }
 
 	/**
 	 * Проверка на существование файла, если файла нет, то создаем его и возвращаем путь к файлу
@@ -99,7 +99,13 @@ class Logger
 	 * @param string $user_name
 	 * @return array
 	 */
-	private function getFile(string $user_name): array
+	#[
+	    ArrayShape([
+	        'file_info' => "array",
+            'error' => "array"
+        ])
+    ]
+    private function getFile(string $user_name): array
 	{
 		$info = new FileInfo();
 		# Дата за текущий день
@@ -160,14 +166,13 @@ class Logger
 	 * Массиво ошибок
 	 *
 	 * @param array $error
-	 * @return array
-	 */
-	private function setError(array $error): array
-	{
+	 * @return void
+     */
+	private function setError(array $error): void
+    {
 		foreach ($error as $key => $value) {
 			$this->error[$key] = $value;
 		}
 
-		return $this->error;
-	}
+    }
 }

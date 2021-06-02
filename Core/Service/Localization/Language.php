@@ -9,17 +9,15 @@ use DI;
 
 class Language
 {
-
-
     /**
      * Получение языка системы
      *
      * @param string $userLanguage
      * @return object
      */
-    final public function getLanguage(string $userLanguage = ''): object
+    final public static function getLanguage(string $userLanguage = ''): object
     {
-        return $this->setLanguage($userLanguage);
+        return self::setLanguage($userLanguage);
     }
 
     /**
@@ -29,7 +27,7 @@ class Language
      * @param string $userLanguage
      * @return object
      */
-    private function setLanguage(string $userLanguage = ''): object
+    private static function setLanguage(string $userLanguage = ''): object
     {
         if($userLanguage === '') {
             $language = Config::item('defaultLanguage');

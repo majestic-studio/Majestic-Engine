@@ -31,10 +31,10 @@ class Setting
      *
      * @param string $key
      * @param string $section
-     * @return false|mixed
+     * @return mixed
      * @throws Exception
      */
-    public static function item(string $key, string $section = 'general')
+    public static function item(string $key, string $section = 'general'): mixed
     {
         if (!Repository::retrieve($section, $key)) {
             self::get($section);
@@ -71,7 +71,7 @@ class Setting
         // Items must be an array.
         if (is_array($settings) && !empty($settings)) {
             // Store items.
-            foreach ($settings as $key => $value) {
+            foreach ($settings as $value) {
                 Repository::store($section, $value);
             }
 

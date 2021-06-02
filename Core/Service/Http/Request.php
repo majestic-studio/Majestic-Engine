@@ -17,6 +17,8 @@
 namespace Core\Service\Http;
 
 
+use JetBrains\PhpStorm\Pure;
+
 /**
  * Class Request
  * @package Core\Service\Http
@@ -34,7 +36,7 @@ class Request
      * @param  string  $method - Метод запроса для проверки.
      * @return bool
      */
-    public static function is(string $method = ''): bool
+    #[Pure] public static function is(string $method = ''): bool
 	{
         return match (strtolower($method)) {
             'https' => self::https(),
