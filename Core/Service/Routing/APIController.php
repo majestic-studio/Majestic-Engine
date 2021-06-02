@@ -12,8 +12,13 @@ class APIController
     public array $data = [];
     public array $nuxt = [];
 
-
-    public function setData($status_code = 200, $error = [], $result = [], $nuxt = []): void
+    /**
+     * @param int $status_code
+     * @param array $error
+     * @param array $result
+     * @param array $nuxt
+     */
+    public function setData(int $status_code = 200, array $error = [], array $result = [], array $nuxt = []): void
     {
         $this->data['result'] = $result;
         $this->data['error'] = $error;

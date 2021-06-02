@@ -1,7 +1,8 @@
 AddDefaultCharset utf-8
 RewriteEngine On
 RewriteBase /
-
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
 Options All -Indexes
 RewriteEngine on

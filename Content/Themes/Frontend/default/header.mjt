@@ -93,6 +93,7 @@
                                         <h4>
                                             Добро пожаловать!
                                         </h4>
+                                        <div id="login-message"></div>
                                         <div class="input-login">
                                             <input type="text" id="user" placeholder="E-mail">
                                             <div class="icons-user-login"></div>
@@ -123,9 +124,8 @@
     </div>
 </header>
 
-<div id="userMenu">
+<div id="userMenu"></div>
 
-</div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

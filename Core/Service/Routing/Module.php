@@ -112,16 +112,6 @@ class Module
         return $this->instance;
     }
 
-
-    /**
-     * @return string
-     * @throws Exception
-     */
-    public function url(): string
-    {
-        return Config::item('base_url') . DIRECTORY_SEPARATOR . 'Modules' . DIRECTORY_SEPARATOR . $this->module . DIRECTORY_SEPARATOR;
-    }
-
     /**
      * Запускает активное действие контроллера.
      *
@@ -134,9 +124,7 @@ class Module
          */
         $class = '\\Modules\\' . $this->module . '\Controller\\' . $this->controller;
 
-        if($this->module === '') {
-            $this->module = 'Frontend';
-        }
+
         /**
          * Проверка на существование класса.
          */

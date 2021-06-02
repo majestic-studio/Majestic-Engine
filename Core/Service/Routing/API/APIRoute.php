@@ -26,8 +26,6 @@ use Core\Service\Routing\RouteAbstract;
  */
 class APIRoute extends RouteAbstract
 {
-
-    public string $assets;
     /**
      * Устанавливает маршрут GET.
      *

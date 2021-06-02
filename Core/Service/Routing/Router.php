@@ -18,6 +18,7 @@ namespace Core\Service\Routing;
 
 
 use Core\Core;
+use Core\Define;
 use Core\Service\API\API;
 use Core\Service\Http\Header;
 use Core\Service\Http\Request;
@@ -57,6 +58,9 @@ class Router
 	 */
 	public static function initialize(): void
     {
+        if (version_compare($version = phpversion(), $required = Define::PHP_MIN, '<')) {
+            die(sprintf('<pre style="font-size: 13px">Для работы Majestic System необходима версия PHP не ниже %s, у вас установлена версия %s.</pre>', $required, $version));
+        }
 		# Запуск системы
 		Core::start();
 

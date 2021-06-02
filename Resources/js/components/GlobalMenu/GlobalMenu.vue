@@ -1,5 +1,6 @@
 <template>
-  <div class="container" @mouseover="loadingDataMenu">
+  <div id="mask-menu" @mouseover="loadingDataMenu"></div>
+  <div class="container">
     <ul class="list">
       <li v-for="tab in tabs"
           :key="tab"
@@ -46,7 +47,7 @@ export default {
   data() {
     return {
       currentTab: {
-        name: 'Promo'
+        name: null
       },
       tabs: null
     }
@@ -81,8 +82,8 @@ export default {
             .then(response => {
               this.tabs = response.data.result
             })
-
-        return this.loadingMenu = true
+        this.currentTab.name = 'Promo'
+        this.loadingMenu = true
       }
 
     }

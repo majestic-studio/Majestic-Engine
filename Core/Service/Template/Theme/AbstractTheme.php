@@ -17,6 +17,8 @@
 namespace Core\Service\Template\Theme;
 
 
+use Core\Define;
+
 /**
  * Class Theme
  * @package Core\Service\Template
@@ -89,6 +91,26 @@ abstract class AbstractTheme
         $this->template = null;
     }
 
+    function minification(string $buffer): string
+    {
+
+        $search = [
+            '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+            '/[^\S ]+\</s',     // strip whitespaces before tags, except space
+            '/(\s)+/s',         // shorten multiple whitespace sequences
+            '/<!--(.|\s)*?-->/', // Remove HTML comments
+        ];
+
+        $replace = [
+            '>',
+            '<',
+            '\\1',
+            ''
+        ];
+
+        return preg_replace($search, $replace, $buffer);
+    }
+
     /**
      * Возвращение результата сборки шаблона
      * Принимает в себя один параметр - название страницы, либо название .mjt файла
@@ -104,7 +126,13 @@ abstract class AbstractTheme
          *
          * Не рекомендуется к использованию.
          */
-        echo $this->result[$container];
+
+        if(Define::production === true) {
+            echo $this->minification($this->result[$container]);
+        } else {
+            echo $this->result[$container];
+        }
+
 
         /**
          * Глобальная очистка переменных шаблона, чтобы переменные и данные шаблона

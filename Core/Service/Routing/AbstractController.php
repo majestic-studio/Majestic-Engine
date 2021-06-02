@@ -32,9 +32,4 @@ abstract class AbstractController
      * @var array - массив data
      */
     public array $data = [];
-
-    /**
-     * @var string
-     */
-    public string $theme = '';
 }

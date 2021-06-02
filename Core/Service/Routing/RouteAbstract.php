@@ -34,7 +34,7 @@ abstract class RouteAbstract
     public static string $module;
 
     /**
-     * Sets a route.
+     * Добавление роута.
      *
      * @param  string  $method - метод маршрута,
      * @param  string  $uri - URI для маршрутизации.
